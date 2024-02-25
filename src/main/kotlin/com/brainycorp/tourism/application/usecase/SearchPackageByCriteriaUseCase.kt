@@ -14,11 +14,11 @@ class SearchPackageByCriteriaUseCase(
 
     override fun execute(searchInput: String): List<Package> {
         val criteria: Criteria = Criteria.fromPrimitives(
-            listOf(
+            filtersOR =  listOf(
                 FiltersPrimitives("name", "CONTAINS", searchInput),
                 FiltersPrimitives("destination", "CONTAINS", searchInput)
             ),
-            listOf(),
+            filtersAND = listOf(),
             "cost",
             "ASC"
         )
