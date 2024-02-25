@@ -6,23 +6,18 @@ import com.brainycorp.tourism.domain.Filter
 class CriteriaToSqlConverter {
 
     companion object {
+        private var op = " AND "
         fun convert(fieldsToSelect: List<String>, tableName: String, criteria: Criteria): String {
             var query: String = "SELECT ${fieldsToSelect.joinToString( ", ") } FROM $tableName"
             println(query)
 
             if (criteria.hasFilters()) {
                 query += " WHERE "
-                var op = " AND "
-                val whereQuery = criteria.filters.filters.map { filter: Filter ->
-                    if (filter.filterOperator.operator.value == "LIKE"){
-                        op = " OR "
-                        "${filter.filterField.field} ${filter.filterOperator.operator.value} '%${filter.filterValue.value}%'"
-                    }else{
-                        op = " AND "
-                        "${filter.filterField.field} ${filter.filterOperator.operator.value} '${filter.filterValue.value}'"
-                    }
-                }
-                query += whereQuery.joinToString(op)
+                val whereQueryOR = criteria.filtersOR.filters.map { filter: Filter -> generateWhereQuery(filter)}
+                query += whereQueryOR.joinToString(" OR ")
+                val whereQueryAND = criteria.filtersAND.filters.map { filter: Filter -> generateWhereQuery(filter)}
+                query += if (whereQueryOR.isEmpty() || whereQueryAND.isEmpty()) whereQueryAND.joinToString(" AND ") else " AND " + whereQueryAND.joinToString(" AND ")
+
             }
 
             if (criteria.hasOrder()){
@@ -33,6 +28,20 @@ class CriteriaToSqlConverter {
             return "$query;"
         }
 
+        private fun generateWhereQuery(filter: Filter): String {
+            if (filter.filterOperator.isContains()) {
+                op = " OR "
+                return "${filter.filterField.field} LIKE '%${filter.filterValue.value}%'";
+            }
+
+            if (filter.filterOperator.isNotContains()) {
+                op = " OR "
+                return "${filter.filterField.field} NOT LIKE '%${filter.filterValue.value}%'";
+            }
+            op = " AND "
+
+            return "${filter.filterField.field} ${filter.filterOperator.operator.value} '${filter.filterValue.value}'"
+        }
     }
 
 }

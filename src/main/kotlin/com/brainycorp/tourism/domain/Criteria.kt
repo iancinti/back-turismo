@@ -1,10 +1,10 @@
 package com.brainycorp.tourism.domain
 
-data class Criteria(val filters: Filters, val order: Order){
+data class Criteria(val filtersOR: Filters, val filtersAND: Filters, val order: Order){
 
     companion object {
-        fun fromPrimitives(filters: List<FiltersPrimitives>, orderBy: String?, orderType: String?): Criteria{
-            return Criteria(Filters.fromPrimitives(filters), Order.fromPrimitives(orderBy, orderType))
+        fun fromPrimitives(filtersOR: List<FiltersPrimitives>, filtersAND: List<FiltersPrimitives>, orderBy: String?, orderType: String?): Criteria{
+            return Criteria(Filters.fromPrimitives(filtersOR), Filters.fromPrimitives(filtersAND), Order.fromPrimitives(orderBy, orderType))
         }
     }
 
@@ -13,7 +13,7 @@ data class Criteria(val filters: Filters, val order: Order){
     }
 
     fun hasFilters(): Boolean {
-        return !filters.isEmpty()
+        return filtersOR.isNotEmpty() || filtersAND.isNotEmpty()
     }
 }
 
@@ -33,6 +33,10 @@ data class Filters(val filters: List<Filter>){
 
     fun isEmpty(): Boolean {
         return filters.isEmpty()
+    }
+
+    fun isNotEmpty(): Boolean {
+        return filters.isNotEmpty()
     }
 
 
@@ -60,7 +64,15 @@ data class Filter(val filterField: FilterField, val filterOperator: FilterOperat
 
 
 data class FilterField(val field: String)
-data class FilterOperator(val operator: Operator)
+data class FilterOperator(val operator: Operator){
+    fun isContains(): Boolean {
+        return operator.value == Operator.CONTAINS.value
+    }
+
+    fun isNotContains(): Boolean {
+        return operator.value == Operator.NOT_CONTAINS.value
+    }
+}
 data class FilterValue(val value: String)
 
 data class Order(val orderBy: OrderBy, val orderType: OrderType) {
@@ -96,7 +108,6 @@ enum class OrderTypes(val value: String) {
 enum class Operator(val value: String) {
     EQUAL("="),
     NOT_EQUAL("!="),
-    LIKE("LIKE"),
     GT(">"),
     LT("<"),
     NOT_CONTAINS("CONTAINS"),
