@@ -2,6 +2,7 @@ package com.brainycorp.tourism.adapter.`in`.controller
 
 import com.brainycorp.tourism.domain.Package
 import com.brainycorp.tourism.application.port.`in`.SearchPackagesByCriteriaQuery
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -15,6 +16,7 @@ class PackageControllerAdapter(
 ) {
 
     @GetMapping
+    @CrossOrigin("*")
     fun retrivePackageByCliteria(@RequestParam("search") searchInput: String): List<Package> {
         return packagesByCriteriaQuery.execute(searchInput)
     }
