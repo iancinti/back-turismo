@@ -1,7 +1,9 @@
 package com.brainycorp.tourism.adapter.out.jdbc
 
+import com.brainycorp.tourism.adapter.out.jdbc.converter.CriteriaToSqlConverter
 import com.brainycorp.tourism.domain.Package
 import com.brainycorp.tourism.application.port.out.SearchPackagesByCriteriaRepository
+import com.brainycorp.tourism.domain.Criteria
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 import java.sql.ResultSet
@@ -12,8 +14,15 @@ class SearchPackagesByCriteriaMySqlAdapter(
 ): SearchPackagesByCriteriaRepository {
 
 
-    override fun execute(): List<Package> {
-        return jdbcTemplate.query("SELECT code, name, destination, cost FROM tourist_package") {
+    override fun execute(criteria: Criteria): List<Package> {
+
+        val query = CriteriaToSqlConverter.convert(
+            listOf("code", "name", "destination", "cost"),
+            "tourist_package",
+            criteria
+        )
+
+        return jdbcTemplate.query(query) {
                 rs: ResultSet, _: Int ->
             Package(
                 rs.getString("code"),

@@ -4,5 +4,5 @@ import com.brainycorp.tourism.domain.Package
 
 interface SearchPackagesByCriteriaQuery {
 
-    fun execute(): List<Package>
+    fun execute(searchInput: String): List<Package>
 }
