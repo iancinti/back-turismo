@@ -110,6 +110,6 @@ enum class Operator(val value: String) {
     NOT_EQUAL("!="),
     GT(">"),
     LT("<"),
-    NOT_CONTAINS("CONTAINS"),
-    CONTAINS("NOT_CONTAINS")
+    NOT_CONTAINS("NOT_CONTAINS"),
+    CONTAINS("CONTAINS")
 }
