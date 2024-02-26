@@ -3,7 +3,7 @@ package com.brainycorp.tourism.adapter.out.jdbc.converter
 import com.brainycorp.tourism.domain.Criteria
 import com.brainycorp.tourism.domain.Filter
 
-class CriteriaToSqlConverter {
+class CriteriaToMySqlConverter {
 
     companion object {
         private var op = " AND "

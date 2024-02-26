@@ -1,6 +1,6 @@
 package com.brainycorp.tourism.adapter.out.jdbc
 
-import com.brainycorp.tourism.adapter.out.jdbc.converter.CriteriaToSqlConverter
+import com.brainycorp.tourism.adapter.out.jdbc.converter.CriteriaToMySqlConverter
 import com.brainycorp.tourism.domain.Package
 import com.brainycorp.tourism.application.port.out.SearchPackagesByCriteriaRepository
 import com.brainycorp.tourism.domain.Criteria
@@ -15,7 +15,7 @@ class SearchPackagesByCriteriaMySqlAdapter(
 
     override fun execute(criteria: Criteria): List<Package> {
 
-        val query = CriteriaToSqlConverter.convert(
+        val query = CriteriaToMySqlConverter.convert(
             listOf("code", "name", "destination", "cost"),
             "tourist_package",
             criteria
