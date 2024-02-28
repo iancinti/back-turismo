@@ -1,7 +1,7 @@
 package com.brainycorp.tourism.adapter.out.jdbc
 
 import com.brainycorp.tourism.adapter.out.jdbc.converter.CriteriaToMySqlConverter
-import com.brainycorp.tourism.application.port.out.SearchServicesByCriteriaRepository
+import com.brainycorp.tourism.application.port.out.RetriveServicesByCriteriaRepository
 import com.brainycorp.tourism.domain.Criteria
 import com.brainycorp.tourism.domain.Service
 import org.springframework.jdbc.core.JdbcTemplate
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component
 import java.sql.ResultSet
 
 @Component
-class SearchServicesByCriteriaMySqlAdapter(
+class RetriveServicesByCriteriaMySqlAdapter(
     val jdbcTemplate: JdbcTemplate
-): SearchServicesByCriteriaRepository {
+): RetriveServicesByCriteriaRepository {
     override fun execute(criteria: Criteria): List<Service> {
         val query = CriteriaToMySqlConverter.convert(
             listOf("code", "description", "destination", "date", "cost"),

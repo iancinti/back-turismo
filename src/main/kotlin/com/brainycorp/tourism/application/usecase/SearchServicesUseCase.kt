@@ -1,7 +1,7 @@
 package com.brainycorp.tourism.application.usecase
 
 import com.brainycorp.tourism.application.port.`in`.SearchServicesQuery
-import com.brainycorp.tourism.application.port.out.SearchServicesByCriteriaRepository
+import com.brainycorp.tourism.application.port.out.RetriveServicesByCriteriaRepository
 import com.brainycorp.tourism.domain.Criteria
 import com.brainycorp.tourism.domain.FiltersPrimitives
 import com.brainycorp.tourism.domain.Service
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class SearchServicesUseCase(
-    private val searchServicesByCriteriaRepository: SearchServicesByCriteriaRepository
+    private val retriveServicesByCriteriaRepository: RetriveServicesByCriteriaRepository
 ): SearchServicesQuery {
 
 
@@ -23,6 +23,6 @@ class SearchServicesUseCase(
             "cost",
             "ASC"
         )
-        return searchServicesByCriteriaRepository.execute(criteria)
+        return retriveServicesByCriteriaRepository.execute(criteria)
     }
 }
