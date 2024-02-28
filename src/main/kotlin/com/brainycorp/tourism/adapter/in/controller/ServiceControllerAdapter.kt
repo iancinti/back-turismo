@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/services")
 class ServiceControllerAdapter(
     val searchServicesQuery: SearchServicesQuery,
-    val createServiceCommand: CreateServiceCommand
+    val createServiceCommand: CreateServiceCommand,
 ) {
 
     @GetMapping
     @CrossOrigin("*")
     fun retriveServiceBySearch(@RequestParam("search") searchInput: String): ResponseEntity<List<Service>> {
-        return ResponseEntity(searchServicesQuery.execute(searchInput) ,HttpStatus.OK)
+        return ResponseEntity(searchServicesQuery.execute(searchInput), HttpStatus.OK)
     }
 
     @PostMapping

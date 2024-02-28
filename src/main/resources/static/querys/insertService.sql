@@ -1,4 +1,4 @@
-INSERT INTO turismo_db.tourist_services (
+INSERT INTO tourist_services (
                               type_id,
                               description,
                               destination,

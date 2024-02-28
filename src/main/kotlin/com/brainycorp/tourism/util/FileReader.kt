@@ -9,6 +9,7 @@ class FileReader {
     companion object {
 
         val INSERT_SERVICE: String = getSql("insertService")
+        val INSERT_PACKAGE: String = getSql("insertPackage")
 
 
         private fun getSql(fileName: String): String {
