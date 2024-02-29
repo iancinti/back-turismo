@@ -4,6 +4,7 @@ import com.brainycorp.tourism.application.port.`in`.SearchClientQuery
 import com.brainycorp.tourism.domain.Client
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -17,6 +18,7 @@ class ClientControllerAdapter(
 ) {
 
     @GetMapping
+    @CrossOrigin("*")
     fun searchClient(@RequestParam searcher: String): ResponseEntity<List<Client>>{
         val response= searchClientQuery.execute(searcher)
         return ResponseEntity(response,HttpStatus.OK)
