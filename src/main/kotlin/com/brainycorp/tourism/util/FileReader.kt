@@ -10,7 +10,7 @@ class FileReader {
 
         val INSERT_SERVICE: String = getSql("insertService")
         val INSERT_PACKAGE: String = getSql("insertPackage")
-
+        val INSERT_PERSONAL_DATA: String = getSql("insertPersonalData")
 
         private fun getSql(fileName: String): String {
             val pathResource = "src/main/resources/static/querys/"
