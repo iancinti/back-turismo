@@ -22,7 +22,7 @@ class InsertClientMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreateClientRepo
                     ps.setString(1, client.name)
                     ps.setString(2, client.lastname)
                     ps.setString(3, client.dni)
-                    val birthdayUtilDate = DateParser.convertStringToDate(client.birthday)
+                    val birthdayUtilDate = DateParser.convertStringToDate(client.birthday!!)
                     val birthdaySqlDate = Date(birthdayUtilDate.time)
                     ps.setDate(4, birthdaySqlDate)
                     ps.setString(5, client.nationality)

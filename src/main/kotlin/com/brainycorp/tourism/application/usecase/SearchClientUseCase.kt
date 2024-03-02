@@ -2,10 +2,7 @@ package com.brainycorp.tourism.application.usecase
 
 import com.brainycorp.tourism.application.port.`in`.SearchClientQuery
 import com.brainycorp.tourism.application.port.out.SearchClientsByCriteriaRepository
-import com.brainycorp.tourism.domain.Client
-import com.brainycorp.tourism.domain.Criteria
-import com.brainycorp.tourism.domain.FiltersPrimitives
-import com.brainycorp.tourism.domain.Operator
+import com.brainycorp.tourism.domain.*
 import org.springframework.stereotype.Component
 
 @Component
@@ -20,9 +17,14 @@ class SearchClientUseCase(
                 FiltersPrimitives("lastname", Operator.CONTAINS.name, searcher),
                 FiltersPrimitives("email", Operator.CONTAINS.name, searcher),
             ),
-            filtersAND = listOf(),
+            filtersAND = listOf(
+                FiltersPrimitives("clients.delete_at", Operator.EQUAL.name, ""),
+            ),
             null,
-            null
+            null,
+            joins = listOf(
+                Join("clients", JoinType.JOIN, "personal_data.personal_data_id = clients.personal_data_id")
+            )
         )
 
         return searchClientsByCriteriaRepository.execute(criteria)

@@ -19,8 +19,8 @@ class CriteriaToMySqlConverter {
             if (criteria.hasFilters()) {
                 query += " WHERE "
                 val whereQueryOR = criteria.filtersOR.filters.map { filter: Filter -> generateWhereQuery(filter)}
-                query += whereQueryOR.joinToString(" OR ")
                 val whereQueryAND = criteria.filtersAND.filters.map { filter: Filter -> generateWhereQuery(filter)}
+                query += if (whereQueryAND.isEmpty()) whereQueryOR.joinToString(" OR ") else "(" + whereQueryOR.joinToString(" OR ") + ")"
                 query += if (whereQueryOR.isEmpty() || whereQueryAND.isEmpty()) whereQueryAND.joinToString(" AND ") else " AND " + whereQueryAND.joinToString(" AND ")
 
             }
@@ -44,6 +44,10 @@ class CriteriaToMySqlConverter {
                 return "${filter.filterField.field} NOT LIKE '%${filter.filterValue.value}%'";
             }
             op = " AND "
+
+            if (filter.filterValue.value.isEmpty()){
+                return "${filter.filterField.field} IS NULL"
+            }
 
             return "${filter.filterField.field} ${filter.filterOperator.operator.value} '${filter.filterValue.value}'"
         }

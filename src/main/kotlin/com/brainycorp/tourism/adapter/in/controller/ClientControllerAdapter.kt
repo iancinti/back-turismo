@@ -1,8 +1,6 @@
 package com.brainycorp.tourism.adapter.`in`.controller
 
-import com.brainycorp.tourism.application.port.`in`.CreateClientCommand
-import com.brainycorp.tourism.application.port.`in`.RetriveClientByIdQuery
-import com.brainycorp.tourism.application.port.`in`.SearchClientQuery
+import com.brainycorp.tourism.application.port.`in`.*
 import com.brainycorp.tourism.domain.Client
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -13,7 +11,9 @@ import org.springframework.web.bind.annotation.*
 class ClientControllerAdapter(
     val searchClientQuery: SearchClientQuery,
     val createClientCommand: CreateClientCommand,
-    val retriveClientByIdQuery: RetriveClientByIdQuery
+    val retriveClientByIdQuery: RetriveClientByIdQuery,
+    val updateClientCommand: UpdateClientCommand,
+    val deleteClientCommand: DeleteClientCommand
 ) {
 
     @GetMapping
@@ -35,6 +35,18 @@ class ClientControllerAdapter(
         createClientCommand.execute(client)
         return ResponseEntity(HttpStatus.CREATED)
 
+    }
+
+    @PatchMapping("/{id}")
+    fun updateClient(@RequestBody client: Client,@PathVariable("id") id: String): ResponseEntity<Void> {
+        updateClientCommand.execute(client, id)
+        return ResponseEntity(HttpStatus.NO_CONTENT)
+    }
+
+    @DeleteMapping("/{id}")
+    fun deleteClient(@PathVariable("id") id: String): ResponseEntity<Void>{
+        deleteClientCommand.execute(id)
+        return ResponseEntity(HttpStatus.NO_CONTENT)
     }
 
 }
