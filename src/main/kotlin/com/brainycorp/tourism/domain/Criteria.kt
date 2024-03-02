@@ -1,10 +1,10 @@
 package com.brainycorp.tourism.domain
 
-data class Criteria(val filtersOR: Filters, val filtersAND: Filters, val order: Order){
+data class Criteria(val filtersOR: Filters, val filtersAND: Filters, val order: Order, val joins: List<Join> = emptyList()){
 
     companion object {
-        fun fromPrimitives(filtersOR: List<FiltersPrimitives>, filtersAND: List<FiltersPrimitives>, orderBy: String?, orderType: String?): Criteria{
-            return Criteria(Filters.fromPrimitives(filtersOR), Filters.fromPrimitives(filtersAND), Order.fromPrimitives(orderBy, orderType))
+        fun fromPrimitives(filtersOR: List<FiltersPrimitives>, filtersAND: List<FiltersPrimitives>, orderBy: String?, orderType: String?, joins: List<Join> = emptyList()): Criteria{
+            return Criteria(Filters.fromPrimitives(filtersOR), Filters.fromPrimitives(filtersAND), Order.fromPrimitives(orderBy, orderType), joins)
         }
     }
 
@@ -98,6 +98,14 @@ data class OrderType(val orderTypes: OrderTypes){
     fun isNone(): Boolean {
         return orderTypes == OrderTypes.NONE
     }
+}
+data class Join(val table: String, val joinType: JoinType, val on: String)
+
+enum class JoinType(val sql: String) {
+    INNER("INNER JOIN"),
+    LEFT("LEFT JOIN"),
+    RIGHT("RIGHT JOIN"),
+    FULL("FULL JOIN")
 }
 
 enum class OrderTypes(val value: String) {

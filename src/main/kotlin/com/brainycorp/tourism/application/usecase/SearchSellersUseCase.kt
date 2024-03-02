@@ -18,8 +18,11 @@ class SearchSellersUseCase(
                 FiltersPrimitives("email", Operator.CONTAINS.name, searcher),
             ),
             filtersAND = listOf(),
-            null,
-            null
+            "employees.salary",
+            OrderTypes.ASC.value,
+            joins = listOf(
+                Join("employees", JoinType.INNER, "personal_data.personal_data_id = employees.personal_data_id")
+            )
         )
 
         return searchSellerByCriterialRepository.execute(criteria)

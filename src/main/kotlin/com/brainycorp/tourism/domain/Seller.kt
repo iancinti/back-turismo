@@ -7,5 +7,7 @@ data class Seller(
     val birthday: String,
     val nationality: String,
     val cellPhone: String,
-    val email: String
+    val email: String,
+    val charge: String,
+    val salary: Double
 )
