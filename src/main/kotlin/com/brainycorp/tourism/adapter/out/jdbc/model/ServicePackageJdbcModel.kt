@@ -11,7 +11,8 @@ data class ServicePackageJdbcModel(
     val codeService: String,
     val descriptionService: String,
     val dateService: String,
-    val costService : String
+    val costService : String,
+    val typeName: String
 ){
 
     companion object {
@@ -26,6 +27,7 @@ data class ServicePackageJdbcModel(
                         services.add(
                             Service(
                                 ser.codeService,
+                                ser.typeName,
                                 ser.descriptionService,
                                 ser.destinationPackage,
                                 ser.dateService,

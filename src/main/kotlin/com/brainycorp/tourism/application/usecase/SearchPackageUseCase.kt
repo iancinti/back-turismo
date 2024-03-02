@@ -20,7 +20,8 @@ class SearchPackageUseCase(
             null,
             joins = listOf(
                 Join("package_services", JoinType.JOIN, "tourist_package.code = package_services.code_package"),
-                Join("tourist_services", JoinType.JOIN, "package_services.code_service = tourist_services.code")
+                Join("tourist_services", JoinType.JOIN, "package_services.code_service = tourist_services.code"),
+                Join("type_services", JoinType.JOIN, "type_services.id = tourist_services.type_id")
             )
         )
 

@@ -19,7 +19,8 @@ class RetriveServicesByCriteriaMySqlAdapter(
                 "description" to "description",
                 "destination" to "destination",
                 "date" to "date",
-                "cost" to "cost"
+                "cost" to "cost",
+                "type_services.name" to "typeName"
             ),
             "tourist_services",
             criteria
@@ -29,6 +30,7 @@ class RetriveServicesByCriteriaMySqlAdapter(
                 rs: ResultSet, _: Int ->
             Service(
                 rs.getString("code"),
+                rs.getString("typeName"),
                 rs.getString("description"),
                 rs.getString("destination"),
                 rs.getString("date"),

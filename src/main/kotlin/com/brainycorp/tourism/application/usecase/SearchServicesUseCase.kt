@@ -2,9 +2,7 @@ package com.brainycorp.tourism.application.usecase
 
 import com.brainycorp.tourism.application.port.`in`.SearchServicesQuery
 import com.brainycorp.tourism.application.port.out.RetriveServicesByCriteriaRepository
-import com.brainycorp.tourism.domain.Criteria
-import com.brainycorp.tourism.domain.FiltersPrimitives
-import com.brainycorp.tourism.domain.Service
+import com.brainycorp.tourism.domain.*
 import org.springframework.stereotype.Component
 
 @Component
@@ -21,7 +19,10 @@ class SearchServicesUseCase(
             ),
             filtersAND = listOf(),
             "cost",
-            "ASC"
+            "ASC",
+            listOf(
+                Join("type_services", JoinType.JOIN, "type_services.id = tourist_services.type_id")
+            )
         )
         return retriveServicesByCriteriaRepository.execute(criteria)
     }
