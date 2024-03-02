@@ -21,7 +21,7 @@ class ServiceControllerAdapter(
 
     @GetMapping
     @CrossOrigin("*")
-    fun retriveServiceBySearch(@RequestParam("search") searchInput: String): ResponseEntity<List<Service>> {
+    fun retriveServiceBySearch(@RequestParam("searcher") searchInput: String): ResponseEntity<List<Service>> {
         return ResponseEntity(searchServicesQuery.execute(searchInput), HttpStatus.OK)
     }
 

@@ -16,7 +16,15 @@ class SearchClientsByCriteriaMySqlAdapter(
 
     override fun execute(criteria: Criteria): List<Client> {
         val query = CriteriaToMySqlConverter.convert(
-            listOf("name", "lastname", "dni", "birthday", "nationality", "cell_phone", "email"),
+            mapOf(
+                "name" to "name",
+                "lastname" to "lastname",
+                "dni" to "dni",
+                "birthday" to "birthday",
+                "nationality" to "nationality",
+                "cell_phone" to "cell_phone",
+                "email" to "email"
+            ),
             "personal_data",
             criteria
         )

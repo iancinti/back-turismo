@@ -7,8 +7,8 @@ class CriteriaToMySqlConverter {
 
     companion object {
         private var op = " AND "
-        fun convert(fieldsToSelect: List<String>, tableName: String, criteria: Criteria): String {
-            var query: String = "SELECT ${fieldsToSelect.joinToString( ", ") } FROM $tableName"
+        fun convert(fieldsToSelect: Map<String, String>, tableName: String, criteria: Criteria): String {
+            var query: String = "SELECT ${fieldsToSelect.map { it.key + " AS " + it.value }.joinToString( ", ") } FROM $tableName"
 
             criteria.joins.forEach { join ->
                 query += " ${join.joinType.sql} ${join.table} ON ${join.on}"

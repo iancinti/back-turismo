@@ -103,6 +103,7 @@ data class Join(val table: String, val joinType: JoinType, val on: String)
 
 enum class JoinType(val sql: String) {
     INNER("INNER JOIN"),
+    JOIN("JOIN"),
     LEFT("LEFT JOIN"),
     RIGHT("RIGHT JOIN"),
     FULL("FULL JOIN")

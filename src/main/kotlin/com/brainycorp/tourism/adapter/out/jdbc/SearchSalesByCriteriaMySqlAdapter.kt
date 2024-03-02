@@ -16,7 +16,12 @@ class SearchSalesByCriteriaMySqlAdapter(
 
 
     override fun execute(criteria: Criteria): List<Sale> {
-        val query = CriteriaToMySqlConverter.convert(listOf("num_sale", "payment_method"), "sales", criteria)
+        val query = CriteriaToMySqlConverter.convert(
+            mapOf(
+                "num_sale" to "num_sale",
+                "payment_method" to "payment_method"
+            ), "sales"
+            , criteria)
 
         return jdbcTemplate.query(query) {
                 rs: ResultSet, _: Int ->

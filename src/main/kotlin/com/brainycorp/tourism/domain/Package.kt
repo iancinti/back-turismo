@@ -4,5 +4,6 @@ data class Package(
     val code: String?,
     val name: String,
     val destination: String,
-    val cost: Double
+    val cost: Double,
+    val services: List<Service>
 )

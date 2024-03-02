@@ -14,7 +14,13 @@ class RetriveServicesByCriteriaMySqlAdapter(
 ): RetriveServicesByCriteriaRepository {
     override fun execute(criteria: Criteria): List<Service> {
         val query = CriteriaToMySqlConverter.convert(
-            listOf("code", "description", "destination", "date", "cost"),
+            mapOf(
+                "code" to "code",
+                "description" to "description",
+                "destination" to "destination",
+                "date" to "date",
+                "cost" to "cost"
+            ),
             "tourist_services",
             criteria
         )

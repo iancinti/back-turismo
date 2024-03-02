@@ -17,7 +17,7 @@ class PackageControllerAdapter(
 
     @GetMapping
     @CrossOrigin("*")
-    fun retrivePackageBySearch(@RequestParam("search") searchInput: String): ResponseEntity<List<Package>> {
+    fun retrivePackageBySearch(@RequestParam("searcher") searchInput: String): ResponseEntity<List<Package>> {
         return ResponseEntity(packagesByCriteriaQuery.execute(searchInput), HttpStatus.OK)
     }
 

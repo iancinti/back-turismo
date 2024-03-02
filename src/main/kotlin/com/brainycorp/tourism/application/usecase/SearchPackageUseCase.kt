@@ -1,11 +1,8 @@
 package com.brainycorp.tourism.application.usecase
 
-import com.brainycorp.tourism.domain.Package
 import com.brainycorp.tourism.application.port.`in`.SearchPackagesQuery
 import com.brainycorp.tourism.application.port.out.SearchPackagesByCriteriaRepository
-import com.brainycorp.tourism.domain.Criteria
-import com.brainycorp.tourism.domain.FiltersPrimitives
-import com.brainycorp.tourism.domain.Operator
+import com.brainycorp.tourism.domain.*
 import org.springframework.stereotype.Component
 
 @Component
@@ -14,17 +11,20 @@ class SearchPackageUseCase(
 ) : SearchPackagesQuery{
 
     override fun execute(searchInput: String): List<Package> {
-        val criteria: Criteria = Criteria.fromPrimitives(
+        val criteriaPackage: Criteria = Criteria.fromPrimitives(
             filtersOR =  listOf(
-                FiltersPrimitives("name", Operator.CONTAINS.value, searchInput),
-                FiltersPrimitives("destination", Operator.CONTAINS.value, searchInput)
+                FiltersPrimitives("tourist_package.name", Operator.CONTAINS.value, searchInput),
             ),
             filtersAND = listOf(),
-            "cost",
-            "ASC"
+            null,
+            null,
+            joins = listOf(
+                Join("package_services", JoinType.JOIN, "tourist_package.code = package_services.code_package"),
+                Join("tourist_services", JoinType.JOIN, "package_services.code_service = tourist_services.code")
+            )
         )
 
-        return searchPackagesByCriteriaRepository.execute(criteria)
+        return searchPackagesByCriteriaRepository.execute(criteriaPackage)
     }
 
 }

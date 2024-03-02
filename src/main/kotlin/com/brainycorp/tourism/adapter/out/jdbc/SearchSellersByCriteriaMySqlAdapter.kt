@@ -16,7 +16,17 @@ class SearchSellersByCriteriaMySqlAdapter(
 
     override fun execute(criteria: Criteria): List<Seller> {
         val query = CriteriaToMySqlConverter.convert(
-            listOf("name", "lastname", "dni", "birthday", "nationality", "cell_phone", "email", "employees.charge", "employees.salary"),
+            mapOf(
+                "name" to "name",
+                "lastname" to "lastname",
+                "dni" to "dni",
+                "birthday" to "birthday",
+                "nationality" to "nationality",
+                "cell_phone" to "cell_phone",
+                "email" to "email",
+                "employees.charge" to "charge",
+                "employees.salary" to "salary"
+            ),
             "personal_data",
             criteria
         )
@@ -29,8 +39,8 @@ class SearchSellersByCriteriaMySqlAdapter(
                 rs.getString("nationality"),
                 rs.getString("cell_phone"),
                 rs.getString("email"),
-                rs.getString("employees.charge"),
-                rs.getDouble("employees.salary")
+                rs.getString("charge"),
+                rs.getDouble("salary")
             )
         }
     }
