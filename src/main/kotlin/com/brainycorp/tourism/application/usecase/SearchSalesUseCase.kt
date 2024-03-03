@@ -2,10 +2,7 @@ package com.brainycorp.tourism.application.usecase
 
 import com.brainycorp.tourism.application.port.`in`.SearchSalesQuery
 import com.brainycorp.tourism.application.port.out.SearchSalesByCriteriaRepository
-import com.brainycorp.tourism.domain.Criteria
-import com.brainycorp.tourism.domain.FiltersPrimitives
-import com.brainycorp.tourism.domain.Operator
-import com.brainycorp.tourism.domain.Sale
+import com.brainycorp.tourism.domain.*
 import org.springframework.stereotype.Component
 
 
@@ -22,6 +19,12 @@ class SearchSalesUseCase(
             listOf(),
             null,
             null,
+            joins = listOf(
+                Join("clients", JoinType.JOIN, "sales.client_id = clients.id"),
+                Join("personal_data", JoinType.JOIN, "clients.personal_data_id = personal_data.personal_data_id"),
+                Join("tourist_package", JoinType.JOIN, "sales.package_id = tourist_package.code"),
+                Join("tourist_services", JoinType.JOIN, "sales.service_id = tourist_services.code"),
+            )
         )
         return searchSalesByCriteriaRepository.execute(criteria)
 
