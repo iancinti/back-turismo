@@ -12,7 +12,8 @@ data class ServicePackageJdbcModel(
     val descriptionService: String,
     val dateService: String,
     val costService : String,
-    val typeName: String
+    val typeName: String,
+    val pic: String
 ){
 
     companion object {
@@ -42,7 +43,8 @@ data class ServicePackageJdbcModel(
                         it.namePackage,
                         it.destinationPackage,
                         it.costPackage.toDouble(),
-                        services
+                        it.pic,
+                        services,
                     )
                 )
             }
