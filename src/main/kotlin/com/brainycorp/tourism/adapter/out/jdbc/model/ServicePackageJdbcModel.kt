@@ -32,7 +32,8 @@ data class ServicePackageJdbcModel(
                                 ser.descriptionService,
                                 ser.destinationPackage,
                                 ser.dateService,
-                                ser.costPackage.toDouble()
+                                ser.costPackage.toDouble(),
+                                ""
                             )
                         )
                     }

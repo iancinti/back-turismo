@@ -15,12 +15,13 @@ class RetriveServicesByCriteriaMySqlAdapter(
     override fun execute(criteria: Criteria): List<Service> {
         val query = CriteriaToMySqlConverter.convert(
             mapOf(
-                "code" to "code",
-                "description" to "description",
-                "destination" to "destination",
-                "date" to "date",
-                "cost" to "cost",
-                "type_services.name" to "typeName"
+                "tourist_services.code" to "code",
+                "tourist_services.description" to "description",
+                "tourist_services.destination" to "destination",
+                "tourist_services.date" to "date",
+                "tourist_services.cost" to "cost",
+                "type_services.name" to "typeName",
+                "tourist_services.pic" to "picS"
             ),
             "tourist_services",
             criteria
@@ -34,7 +35,8 @@ class RetriveServicesByCriteriaMySqlAdapter(
                 rs.getString("description"),
                 rs.getString("destination"),
                 rs.getString("date"),
-                rs.getDouble("cost")
+                rs.getDouble("cost"),
+                if(rs.getString("picS") != null ) rs.getString("picS") else "https://img.freepik.com/free-vector/front-view-sketch-fuck-you-symbol_23-2148667363.jpg"
             )
         }
     }

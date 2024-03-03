@@ -30,7 +30,7 @@ class SearchSalesByCriteriaMySqlAdapter(
                 "tourist_services.description" to "descriptionService",
                 "tourist_services.cost" to "costService",
                 "tourist_services.destination" to "destinationService",
-                "tourist_package.pic" to "pic",
+                "tourist_package.pic" to "picPackage",
             ), "sales"
             , criteria)
 
@@ -53,7 +53,7 @@ class SearchSalesByCriteriaMySqlAdapter(
                         rs.getString("namePackage"),
                         rs.getString("destinationPackage"),
                         rs.getDouble("costPackage"),
-                        rs.getString("pic"),
+                        rs.getString("picPackage"),
                         listOf(),
                     ),
                     Service(
@@ -63,6 +63,7 @@ class SearchSalesByCriteriaMySqlAdapter(
                         rs.getString("destinationService"),
                         "",
                         rs.getDouble("costService"),
+                        ""
                     )
                 )
         }

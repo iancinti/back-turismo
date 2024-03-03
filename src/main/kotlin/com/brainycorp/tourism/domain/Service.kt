@@ -6,5 +6,6 @@ data class Service(
     val description: String,
     val destination: String,
     val date: String?,
-    val cost: Double
+    val cost: Double,
+    val pic: String
 )

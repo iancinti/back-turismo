@@ -27,7 +27,7 @@ class SearchPackagesByCriteriaMySqlAdapter(
                 "tourist_services.date" to "dateS",
                 "tourist_services.cost" to "costS",
                 "type_services.name" to "servicetypename",
-                "tourist_package.pic" to "pic"
+                "tourist_package.pic" to "picP"
             ),
             "tourist_package",
             criteria
@@ -45,7 +45,7 @@ class SearchPackagesByCriteriaMySqlAdapter(
                 rs.getString("dateS"),
                 rs.getString("costS"),
                 rs.getString("servicetypename"),
-                rs.getString("pic")
+                rs.getString("picP")
             )
         }
 
