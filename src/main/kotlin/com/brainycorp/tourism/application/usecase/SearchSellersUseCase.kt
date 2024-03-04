@@ -17,7 +17,10 @@ class SearchSellersUseCase(
                 FiltersPrimitives("lastname", Operator.CONTAINS.name, searcher),
                 FiltersPrimitives("email", Operator.CONTAINS.name, searcher),
             ),
-            filtersAND = listOf(),
+            filtersAND = listOf(
+                FiltersPrimitives("employees.delete_at", Operator.EQUAL.name, ""),
+                FiltersPrimitives("personal_data.delete_at", Operator.EQUAL.name, "")
+            ),
             "salary",
             OrderTypes.ASC.value,
             joins = listOf(
