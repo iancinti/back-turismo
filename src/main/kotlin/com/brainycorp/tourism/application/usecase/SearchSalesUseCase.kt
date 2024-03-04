@@ -16,7 +16,9 @@ class SearchSalesUseCase(
             listOf(
                 FiltersPrimitives("payment_method", Operator.CONTAINS.name, searcher)
             ),
-            listOf(),
+            listOf(
+                FiltersPrimitives("sales.delete_at", Operator.EQUAL.name, "")
+            ),
             null,
             null,
             joins = listOf(

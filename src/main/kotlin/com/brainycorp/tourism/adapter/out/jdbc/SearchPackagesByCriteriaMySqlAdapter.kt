@@ -45,7 +45,7 @@ class SearchPackagesByCriteriaMySqlAdapter(
                 rs.getString("dateS"),
                 rs.getString("costS"),
                 rs.getString("servicetypename"),
-                rs.getString("picP")
+                rs.getString("picP")?: ""
             )
         }
 
