@@ -22,6 +22,8 @@ class UpdateSellerMySqlAdapter(
             seller.nationality,
             seller.cellPhone,
             seller.email,
+            seller.salary,
+            seller.charge,
             sellerId
         )
     }

@@ -6,5 +6,7 @@ UPDATE personal_data pd
         pd.birthday = COALESCE(NULLIF( ? , ''), pd.birthday),
         pd.nationality = COALESCE(NULLIF( ? , ''), pd.nationality),
         pd.cell_phone = COALESCE(NULLIF( ? , ''), pd.cell_phone),
-        pd.email = COALESCE(NULLIF( ? , ''), pd.email)
+        pd.email = COALESCE(NULLIF( ? , ''), pd.email),
+        c.salary = COALESCE(NULLIF(? , ''), c.salary),
+        c.charge = COALESCE(NULLIF(? , ''), c.charge)
 WHERE c.id = ?;
