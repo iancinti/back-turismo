@@ -1,9 +1,11 @@
 package com.brainycorp.tourism.adapter.`in`.controller
 
+import com.brainycorp.tourism.adapter.`in`.controller.model.SaleRequest
 import com.brainycorp.tourism.application.port.`in`.CreateSaleCommand
+import com.brainycorp.tourism.application.port.`in`.DeleteSaleCommand
 import com.brainycorp.tourism.application.port.`in`.SearchSalesQuery
+import com.brainycorp.tourism.application.port.`in`.UpdateSaleCommand
 import com.brainycorp.tourism.domain.Sale
-import com.brainycorp.tourism.domain.Seller
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/sales")
 class SalesControllerAdapter (
     val searchSalesQuery: SearchSalesQuery,
-    val createSaleCommand: CreateSaleCommand
+    val createSaleCommand: CreateSaleCommand,
+    val updateSaleCommand: UpdateSaleCommand,
+    val deleteSaleCommand: DeleteSaleCommand
 ) {
 
     @GetMapping
@@ -31,5 +35,18 @@ class SalesControllerAdapter (
 
     }
 
+
+    @PatchMapping("/{id}")
+    fun updateSale(@RequestBody sale: SaleRequest, @PathVariable("id") id:String): ResponseEntity<Void> {
+        updateSaleCommand.execute(sale, id)
+        return ResponseEntity(HttpStatus.NO_CONTENT)
+    }
+
+
+   @DeleteMapping("/{id}")
+    fun deleteSale(@PathVariable("id") id: String): ResponseEntity<Void> {
+        deleteSaleCommand.execute(id)
+        return ResponseEntity(HttpStatus.NO_CONTENT)
+    }
 
 }

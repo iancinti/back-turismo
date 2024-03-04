@@ -12,6 +12,8 @@ class FileReader {
         val INSERT_PACKAGE: String = getSql("insertPackage")
         val INSERT_PERSONAL_DATA: String = getSql("insertPersonalData")
         val INSERT_SALE: String = getSql("insertSale")
+        val UPDATE_SALE: String = getSql("updateSale")
+        val DELETE_SALE: String = getSql("deleteSale")
         val UPDATE_SELLER: String = getSql("updateSeller")
         val DELETE_SELLER: String = getSql("deleteSeller")
         val UPDATE_CLIENT: String = getSql("updateClient")
