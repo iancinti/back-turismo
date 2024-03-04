@@ -24,7 +24,7 @@ class InsertSellerMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreateSellerRepo
                 ps.setString(1, seller.name)
                 ps.setString(2, seller.lastname)
                 ps.setString(3, seller.dni)
-                val birthdayUtilDate = DateParser.convertStringToDate(seller.birthday)
+                val birthdayUtilDate = DateParser.convertStringToDate(seller.birthday!!)
                 val birthdaySqlDate = Date(birthdayUtilDate.time)
                 ps.setDate(4, birthdaySqlDate)
                 ps.setString(5, seller.nationality)
