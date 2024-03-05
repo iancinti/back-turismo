@@ -2,7 +2,7 @@ package com.brainycorp.tourism.service.application.usecase
 
 import com.brainycorp.tourism.service.application.port.`in`.CreateServiceCommand
 import com.brainycorp.tourism.service.application.port.out.CreateServiceRepository
-import com.brainycorp.tourism.domain.Service
+import com.brainycorp.tourism.service.domain.Service
 import org.springframework.stereotype.Component
 
 @Component

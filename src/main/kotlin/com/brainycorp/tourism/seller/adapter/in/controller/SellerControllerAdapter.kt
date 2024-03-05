@@ -4,7 +4,7 @@ import com.brainycorp.tourism.seller.application.port.`in`.CreateSellerCommand
 import com.brainycorp.tourism.seller.application.port.`in`.DeleteSellerCommand
 import com.brainycorp.tourism.seller.application.port.`in`.SearchSellerQuery
 import com.brainycorp.tourism.seller.application.port.`in`.UpdateSellerCommand
-import com.brainycorp.tourism.domain.Seller
+import com.brainycorp.tourism.seller.domain.Seller
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.CrossOrigin
@@ -45,7 +45,7 @@ class SellerControllerAdapter(
 
 
     @PatchMapping("/{id}")
-    fun updateSeller(@RequestBody seller: Seller,@PathVariable("id") id:String): ResponseEntity<Void> {
+    fun updateSeller(@RequestBody seller: Seller, @PathVariable("id") id:String): ResponseEntity<Void> {
         updateSellerCommand.execute(seller, id)
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }

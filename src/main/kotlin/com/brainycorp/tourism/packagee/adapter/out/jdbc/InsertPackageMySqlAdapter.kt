@@ -1,7 +1,7 @@
 package com.brainycorp.tourism.packagee.adapter.out.jdbc
 
 import com.brainycorp.tourism.packagee.application.port.out.CreatePackageRepository
-import com.brainycorp.tourism.domain.Package
+import com.brainycorp.tourism.packagee.domain.Package
 import com.brainycorp.tourism.util.FileReader.Companion.INSERT_PACKAGE
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component

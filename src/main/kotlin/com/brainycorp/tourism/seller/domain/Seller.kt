@@ -1,4 +1,4 @@
-package com.brainycorp.tourism.domain
+package com.brainycorp.tourism.seller.domain
 
 data class Seller(
     val name: String,

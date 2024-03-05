@@ -1,4 +1,4 @@
-package com.brainycorp.tourism.domain
+package com.brainycorp.tourism.client.domain
 
 data class Client(
     val name: String?,

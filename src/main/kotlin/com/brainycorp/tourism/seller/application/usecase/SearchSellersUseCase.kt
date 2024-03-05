@@ -3,6 +3,7 @@ package com.brainycorp.tourism.seller.application.usecase
 import com.brainycorp.tourism.seller.application.port.`in`.SearchSellerQuery
 import com.brainycorp.tourism.seller.application.port.out.SearchSellerByCriterialRepository
 import com.brainycorp.tourism.domain.*
+import com.brainycorp.tourism.seller.domain.Seller
 import org.springframework.stereotype.Component
 
 @Component

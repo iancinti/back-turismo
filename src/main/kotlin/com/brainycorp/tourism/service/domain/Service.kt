@@ -1,4 +1,4 @@
-package com.brainycorp.tourism.domain
+package com.brainycorp.tourism.service.domain
 
 data class Service(
     val code: String,

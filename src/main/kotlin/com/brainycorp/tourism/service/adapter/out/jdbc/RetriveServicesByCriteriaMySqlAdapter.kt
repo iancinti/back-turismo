@@ -3,7 +3,7 @@ package com.brainycorp.tourism.service.adapter.out.jdbc
 import com.brainycorp.tourism.util.converter.CriteriaToMySqlConverter
 import com.brainycorp.tourism.service.application.port.out.RetriveServicesByCriteriaRepository
 import com.brainycorp.tourism.domain.Criteria
-import com.brainycorp.tourism.domain.Service
+import com.brainycorp.tourism.service.domain.Service
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 import java.sql.ResultSet

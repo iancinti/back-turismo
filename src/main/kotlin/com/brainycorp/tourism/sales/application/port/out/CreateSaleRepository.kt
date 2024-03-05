@@ -1,6 +1,6 @@
 package com.brainycorp.tourism.sales.application.port.out
 
-import com.brainycorp.tourism.domain.Sale
+import com.brainycorp.tourism.sales.domain.Sale
 
 interface CreateSaleRepository {
 

@@ -5,7 +5,7 @@ import com.brainycorp.tourism.service.application.port.out.RetriveServicesByCrit
 import com.brainycorp.tourism.domain.Criteria
 import com.brainycorp.tourism.domain.FiltersPrimitives
 import com.brainycorp.tourism.domain.Operator
-import com.brainycorp.tourism.domain.Service
+import com.brainycorp.tourism.service.domain.Service
 import org.springframework.stereotype.Component
 
 @Component

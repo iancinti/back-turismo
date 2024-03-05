@@ -4,7 +4,7 @@ import com.brainycorp.tourism.service.application.port.`in`.CreateServiceCommand
 import com.brainycorp.tourism.service.application.port.`in`.RetriveServiceByIdQuery
 import com.brainycorp.tourism.service.application.port.`in`.RetriveServiceByTypeIdQuery
 import com.brainycorp.tourism.service.application.port.`in`.SearchServicesQuery
-import com.brainycorp.tourism.domain.Service
+import com.brainycorp.tourism.service.domain.Service
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

@@ -2,7 +2,7 @@ package com.brainycorp.tourism.packagee.adapter.out.jdbc
 
 import com.brainycorp.tourism.util.converter.CriteriaToMySqlConverter
 import com.brainycorp.tourism.packagee.adapter.out.jdbc.model.ServicePackageJdbcModel
-import com.brainycorp.tourism.domain.Package
+import com.brainycorp.tourism.packagee.domain.Package
 import com.brainycorp.tourism.packagee.application.port.out.SearchPackagesByCriteriaRepository
 import com.brainycorp.tourism.domain.Criteria
 import org.springframework.jdbc.core.JdbcTemplate

@@ -5,7 +5,7 @@ import com.brainycorp.tourism.sales.application.port.`in`.CreateSaleCommand
 import com.brainycorp.tourism.sales.application.port.`in`.DeleteSaleCommand
 import com.brainycorp.tourism.sales.application.port.`in`.SearchSalesQuery
 import com.brainycorp.tourism.sales.application.port.`in`.UpdateSaleCommand
-import com.brainycorp.tourism.domain.Sale
+import com.brainycorp.tourism.sales.domain.Sale
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

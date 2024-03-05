@@ -1,8 +1,9 @@
 package com.brainycorp.tourism.packagee.application.usecase
 
+import com.brainycorp.tourism.domain.*
 import com.brainycorp.tourism.packagee.application.port.`in`.SearchPackagesQuery
 import com.brainycorp.tourism.packagee.application.port.out.SearchPackagesByCriteriaRepository
-import com.brainycorp.tourism.domain.*
+import com.brainycorp.tourism.packagee.domain.Package
 import org.springframework.stereotype.Component
 
 @Component

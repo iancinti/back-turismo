@@ -3,6 +3,7 @@ package com.brainycorp.tourism.service.application.usecase
 import com.brainycorp.tourism.service.application.port.`in`.SearchServicesQuery
 import com.brainycorp.tourism.service.application.port.out.RetriveServicesByCriteriaRepository
 import com.brainycorp.tourism.domain.*
+import com.brainycorp.tourism.service.domain.Service
 import org.springframework.stereotype.Component
 
 @Component

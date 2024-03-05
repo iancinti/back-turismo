@@ -1,4 +1,6 @@
-package com.brainycorp.tourism.domain
+package com.brainycorp.tourism.packagee.domain
+
+import com.brainycorp.tourism.service.domain.Service
 
 data class Package(
     val code: String?,

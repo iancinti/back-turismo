@@ -1,7 +1,7 @@
 package com.brainycorp.tourism.client.adapter.`in`.controller
 
 import com.brainycorp.tourism.client.application.port.`in`.*
-import com.brainycorp.tourism.domain.Client
+import com.brainycorp.tourism.client.domain.Client
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -38,7 +38,7 @@ class ClientControllerAdapter(
     }
 
     @PatchMapping("/{id}")
-    fun updateClient(@RequestBody client: Client,@PathVariable("id") id: String): ResponseEntity<Void> {
+    fun updateClient(@RequestBody client: Client, @PathVariable("id") id: String): ResponseEntity<Void> {
         updateClientCommand.execute(client, id)
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }

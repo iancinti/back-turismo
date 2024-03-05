@@ -1,7 +1,7 @@
 package com.brainycorp.tourism.packagee.adapter.`in`.controller
 
 import com.brainycorp.tourism.packagee.application.port.`in`.CreatePackageCommand
-import com.brainycorp.tourism.domain.Package
+import com.brainycorp.tourism.packagee.domain.Package
 import com.brainycorp.tourism.packagee.application.port.`in`.SearchPackagesQuery
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

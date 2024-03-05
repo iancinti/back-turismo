@@ -2,6 +2,7 @@ package com.brainycorp.tourism.client.application.usecase
 
 import com.brainycorp.tourism.client.application.port.`in`.RetriveClientByIdQuery
 import com.brainycorp.tourism.client.application.port.out.RetriveClientsByCriteriaRepository
+import com.brainycorp.tourism.client.domain.Client
 import com.brainycorp.tourism.domain.*
 import org.springframework.stereotype.Component
 

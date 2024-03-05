@@ -1,7 +1,7 @@
 package com.brainycorp.tourism.client.adapter.out.jdbc
 
 import com.brainycorp.tourism.client.application.port.out.CreateClientRepository
-import com.brainycorp.tourism.domain.Client
+import com.brainycorp.tourism.client.domain.Client
 import com.brainycorp.tourism.util.DateParser
 import com.brainycorp.tourism.util.FileReader.Companion.INSERT_PERSONAL_DATA
 import org.springframework.jdbc.core.JdbcTemplate

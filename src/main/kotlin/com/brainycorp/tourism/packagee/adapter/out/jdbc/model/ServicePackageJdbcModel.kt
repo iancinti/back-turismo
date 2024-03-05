@@ -1,7 +1,7 @@
 package com.brainycorp.tourism.packagee.adapter.out.jdbc.model
 
-import com.brainycorp.tourism.domain.Package
-import com.brainycorp.tourism.domain.Service
+import com.brainycorp.tourism.packagee.domain.Package
+import com.brainycorp.tourism.service.domain.Service
 
 data class ServicePackageJdbcModel(
     val codePackage: String,
