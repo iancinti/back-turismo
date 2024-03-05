@@ -1,6 +1,7 @@
 package com.brainycorp.tourism.packagee.adapter.`in`.controller
 
 import com.brainycorp.tourism.packagee.application.port.`in`.CreatePackageCommand
+import com.brainycorp.tourism.packagee.application.port.`in`.DeletePackageCommand
 import com.brainycorp.tourism.packagee.domain.Package
 import com.brainycorp.tourism.packagee.application.port.`in`.SearchPackagesQuery
 import com.brainycorp.tourism.packagee.application.port.`in`.UpdatePackageCommand
@@ -14,7 +15,8 @@ import org.springframework.web.bind.annotation.*
 class PackageControllerAdapter(
     val packagesByCriteriaQuery: SearchPackagesQuery,
     val createPackageCommand: CreatePackageCommand,
-    val updatePackageCommand: UpdatePackageCommand
+    val updatePackageCommand: UpdatePackageCommand,
+    val deletePackageCommand: DeletePackageCommand
 ) {
 
     @GetMapping
@@ -31,10 +33,15 @@ class PackageControllerAdapter(
 
     }
 
-
     @PatchMapping("/{code}")
     fun updatePackage(@RequestBody packag: Package, @PathVariable("code") code: String): ResponseEntity<Void> {
         updatePackageCommand.execute(packag, code)
+        return ResponseEntity(HttpStatus.NO_CONTENT)
+    }
+
+    @DeleteMapping("/{code}")
+    fun deletePackage(@PathVariable("code") code: String): ResponseEntity<Void> {
+        deletePackageCommand.execute(code)
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
 
