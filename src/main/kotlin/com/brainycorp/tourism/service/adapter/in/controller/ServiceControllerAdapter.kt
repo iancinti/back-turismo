@@ -1,9 +1,6 @@
 package com.brainycorp.tourism.service.adapter.`in`.controller
 
-import com.brainycorp.tourism.service.application.port.`in`.CreateServiceCommand
-import com.brainycorp.tourism.service.application.port.`in`.RetriveServiceByIdQuery
-import com.brainycorp.tourism.service.application.port.`in`.RetriveServiceByTypeIdQuery
-import com.brainycorp.tourism.service.application.port.`in`.SearchServicesQuery
+import com.brainycorp.tourism.service.application.port.`in`.*
 import com.brainycorp.tourism.service.domain.Service
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -15,7 +12,8 @@ class ServiceControllerAdapter(
     val searchServicesQuery: SearchServicesQuery,
     val createServiceCommand: CreateServiceCommand,
     val retriveServiceByIdQuery: RetriveServiceByIdQuery,
-    val retriveServiceByTypeIdQuery: RetriveServiceByTypeIdQuery
+    val retriveServiceByTypeIdQuery: RetriveServiceByTypeIdQuery,
+    val updateServiceCommand: UpdateServiceCommand
 ) {
 
 
@@ -43,4 +41,13 @@ class ServiceControllerAdapter(
         createServiceCommand.execute(service)
         return ResponseEntity(HttpStatus.CREATED)
     }
+
+
+    @PatchMapping("/{code}")
+    fun updateService(@RequestBody service: Service, @PathVariable("code") code: String): ResponseEntity<Void> {
+        updateServiceCommand.execute(service, code)
+        return ResponseEntity(HttpStatus.NO_CONTENT)
+    }
+
+
 }

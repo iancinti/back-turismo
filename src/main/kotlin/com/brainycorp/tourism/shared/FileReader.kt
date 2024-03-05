@@ -9,6 +9,7 @@ class FileReader {
     companion object {
 
         val INSERT_SERVICE: String = getSql("insertService")
+        val UPDATE_SERVICE: String = getSql("updateService")
         val INSERT_PACKAGE: String = getSql("insertPackage")
         val UPDATE_PACKAGE: String = getSql("updatePackage")
         val DELETE_PACKAGE: String = getSql("deletePackage")
