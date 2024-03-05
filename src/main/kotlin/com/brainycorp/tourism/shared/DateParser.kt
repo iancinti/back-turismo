@@ -1,4 +1,4 @@
-package com.brainycorp.tourism.util
+package com.brainycorp.tourism.shared
 
 import java.sql.Date
 import java.time.LocalDate

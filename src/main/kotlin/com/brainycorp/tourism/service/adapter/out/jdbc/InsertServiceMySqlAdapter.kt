@@ -2,7 +2,7 @@ package com.brainycorp.tourism.service.adapter.out.jdbc
 
 import com.brainycorp.tourism.service.application.port.out.CreateServiceRepository
 import com.brainycorp.tourism.service.domain.Service
-import com.brainycorp.tourism.util.FileReader.Companion.INSERT_SERVICE
+import com.brainycorp.tourism.shared.FileReader.Companion.INSERT_SERVICE
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 

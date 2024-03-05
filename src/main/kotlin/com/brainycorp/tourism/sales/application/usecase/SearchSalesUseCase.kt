@@ -2,8 +2,8 @@ package com.brainycorp.tourism.sales.application.usecase
 
 import com.brainycorp.tourism.sales.application.port.`in`.SearchSalesQuery
 import com.brainycorp.tourism.sales.application.port.out.SearchSalesByCriteriaRepository
-import com.brainycorp.tourism.domain.*
 import com.brainycorp.tourism.sales.domain.Sale
+import com.brainycorp.tourism.shared.criteria.*
 import org.springframework.stereotype.Component
 
 

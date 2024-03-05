@@ -1,4 +1,4 @@
-package com.brainycorp.tourism.config
+package com.brainycorp.tourism.shared.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

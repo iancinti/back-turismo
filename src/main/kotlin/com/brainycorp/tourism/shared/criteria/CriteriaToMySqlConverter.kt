@@ -1,7 +1,4 @@
-package com.brainycorp.tourism.util.converter
-
-import com.brainycorp.tourism.domain.Criteria
-import com.brainycorp.tourism.domain.Filter
+package com.brainycorp.tourism.shared.criteria
 
 class CriteriaToMySqlConverter {
 

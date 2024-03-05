@@ -2,7 +2,7 @@ package com.brainycorp.tourism.sales.adapter.out.jdbc
 
 import com.brainycorp.tourism.sales.adapter.`in`.controller.model.SaleRequest
 import com.brainycorp.tourism.sales.application.port.out.UpdateSaleRepository
-import com.brainycorp.tourism.util.FileReader.Companion.UPDATE_SALE
+import com.brainycorp.tourism.shared.FileReader.Companion.UPDATE_SALE
 import org.springframework.dao.DataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component

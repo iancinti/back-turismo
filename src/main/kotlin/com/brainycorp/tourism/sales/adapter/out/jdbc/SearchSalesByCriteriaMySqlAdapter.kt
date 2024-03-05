@@ -1,12 +1,12 @@
 package com.brainycorp.tourism.sales.adapter.out.jdbc
 
 import com.brainycorp.tourism.client.domain.Client
-import com.brainycorp.tourism.util.converter.CriteriaToMySqlConverter
+import com.brainycorp.tourism.shared.criteria.CriteriaToMySqlConverter
 import com.brainycorp.tourism.sales.application.port.out.SearchSalesByCriteriaRepository
-import com.brainycorp.tourism.domain.*
 import com.brainycorp.tourism.packagee.domain.Package
 import com.brainycorp.tourism.sales.domain.Sale
 import com.brainycorp.tourism.service.domain.Service
+import com.brainycorp.tourism.shared.criteria.Criteria
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 import java.sql.ResultSet

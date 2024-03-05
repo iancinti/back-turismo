@@ -1,9 +1,9 @@
-package com.brainycorp.tourism.domain
+package com.brainycorp.tourism.shared.criteria
 
 data class Criteria(val filtersOR: Filters, val filtersAND: Filters, val order: Order, val joins: List<Join> = emptyList()){
 
     companion object {
-        fun fromPrimitives(filtersOR: List<FiltersPrimitives>, filtersAND: List<FiltersPrimitives>, orderBy: String?, orderType: String?, joins: List<Join> = emptyList()): Criteria{
+        fun fromPrimitives(filtersOR: List<FiltersPrimitives>, filtersAND: List<FiltersPrimitives>, orderBy: String?, orderType: String?, joins: List<Join> = emptyList()): Criteria {
             return Criteria(Filters.fromPrimitives(filtersOR), Filters.fromPrimitives(filtersAND), Order.fromPrimitives(orderBy, orderType), joins)
         }
     }
@@ -83,7 +83,7 @@ data class Order(val orderBy: OrderBy, val orderType: OrderType) {
         }
 
         fun fromPrimitives(orderBy: String?, orderType: String?): Order {
-            return if(orderBy != null) Order(OrderBy(orderBy), OrderType(OrderTypes.valueOf(orderType!!))) else Order.none()
+            return if(orderBy != null) Order(OrderBy(orderBy), OrderType(OrderTypes.valueOf(orderType!!))) else none()
         }
     }
 

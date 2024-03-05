@@ -2,7 +2,7 @@ package com.brainycorp.tourism.sales.adapter.out.jdbc
 
 import com.brainycorp.tourism.sales.application.port.out.CreateSaleRepository
 import com.brainycorp.tourism.sales.domain.Sale
-import com.brainycorp.tourism.util.FileReader
+import com.brainycorp.tourism.shared.FileReader
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 

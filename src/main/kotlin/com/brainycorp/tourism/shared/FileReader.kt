@@ -1,4 +1,4 @@
-package com.brainycorp.tourism.util
+package com.brainycorp.tourism.shared
 
 import java.io.IOException
 import java.nio.file.Files

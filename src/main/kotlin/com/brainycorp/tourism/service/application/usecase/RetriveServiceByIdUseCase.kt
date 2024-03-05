@@ -2,9 +2,9 @@ package com.brainycorp.tourism.service.application.usecase
 
 import com.brainycorp.tourism.service.application.port.`in`.RetriveServiceByIdQuery
 import com.brainycorp.tourism.service.application.port.out.RetriveServicesByCriteriaRepository
-import com.brainycorp.tourism.domain.Criteria
-import com.brainycorp.tourism.domain.FiltersPrimitives
-import com.brainycorp.tourism.domain.Operator
+import com.brainycorp.tourism.shared.criteria.Criteria
+import com.brainycorp.tourism.shared.criteria.FiltersPrimitives
+import com.brainycorp.tourism.shared.criteria.Operator
 import com.brainycorp.tourism.service.domain.Service
 import org.springframework.stereotype.Component
 

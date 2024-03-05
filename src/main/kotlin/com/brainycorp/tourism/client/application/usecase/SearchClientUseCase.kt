@@ -3,7 +3,7 @@ package com.brainycorp.tourism.client.application.usecase
 import com.brainycorp.tourism.client.application.port.`in`.SearchClientQuery
 import com.brainycorp.tourism.client.application.port.out.SearchClientsByCriteriaRepository
 import com.brainycorp.tourism.client.domain.Client
-import com.brainycorp.tourism.domain.*
+import com.brainycorp.tourism.shared.criteria.*
 import org.springframework.stereotype.Component
 
 @Component
