@@ -13,7 +13,8 @@ class ServiceControllerAdapter(
     val createServiceCommand: CreateServiceCommand,
     val retriveServiceByIdQuery: RetriveServiceByIdQuery,
     val retriveServiceByTypeIdQuery: RetriveServiceByTypeIdQuery,
-    val updateServiceCommand: UpdateServiceCommand
+    val updateServiceCommand: UpdateServiceCommand,
+    val deleteServiceCommand: DeleteServiceCommand
 ) {
 
 
@@ -49,5 +50,11 @@ class ServiceControllerAdapter(
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
 
+
+    @DeleteMapping("/{code}")
+    fun deleteService(@PathVariable("code") code: String): ResponseEntity<Void> {
+        deleteServiceCommand.execute(code)
+        return ResponseEntity(HttpStatus.NO_CONTENT)
+    }
 
 }
