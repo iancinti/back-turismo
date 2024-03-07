@@ -61,7 +61,7 @@ class SearchSalesByCriteriaMySqlAdapter(
                         listOf(),
                     ),
                     Service(
-                        rs.getString("codeService"),
+                        rs.getInt("codeService"),
                         "",
                         rs.getString("destinationService"),
                         rs.getString("destinationService"),
