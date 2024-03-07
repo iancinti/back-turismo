@@ -1,10 +1,7 @@
 package com.brainycorp.tourism.packagee.adapter.`in`.controller
 
-import com.brainycorp.tourism.packagee.application.port.`in`.CreatePackageCommand
-import com.brainycorp.tourism.packagee.application.port.`in`.DeletePackageCommand
+import com.brainycorp.tourism.packagee.application.port.`in`.*
 import com.brainycorp.tourism.packagee.domain.Package
-import com.brainycorp.tourism.packagee.application.port.`in`.SearchPackagesQuery
-import com.brainycorp.tourism.packagee.application.port.`in`.UpdatePackageCommand
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -14,6 +11,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/packages")
 class PackageControllerAdapter(
     val packagesByCriteriaQuery: SearchPackagesQuery,
+    val retrivePackageByCodeQuery: RetrivePackageByCodeQuery,
     val createPackageCommand: CreatePackageCommand,
     val updatePackageCommand: UpdatePackageCommand,
     val deletePackageCommand: DeletePackageCommand
@@ -23,6 +21,13 @@ class PackageControllerAdapter(
     @CrossOrigin("*")
     fun retrivePackageBySearch(@RequestParam("searcher") searchInput: String): ResponseEntity<List<Package>> {
         return ResponseEntity(packagesByCriteriaQuery.execute(searchInput), HttpStatus.OK)
+    }
+
+
+    @GetMapping("/{code}")
+    fun retrivePackageByCode(@PathVariable("code") code: String): ResponseEntity<Package> {
+        val response = retrivePackageByCodeQuery.execute(code)
+        return ResponseEntity(response, HttpStatus.OK)
     }
 
 
