@@ -1,6 +1,5 @@
 package com.brainycorp.tourism.packagee.domain
 
-import com.brainycorp.tourism.service.domain.Service
 
 data class Package(
     val code: String?,
@@ -8,5 +7,15 @@ data class Package(
     val destination: String?,
     val cost: Double?,
     val pic: String?,
-    val services: List<Service>?
+    val services: List<Item>?
+)
+
+data class Item(
+    val code: Int?,
+    val type: String?,
+    val description: String?,
+    val destination: String?,
+    val date: String?,
+    val cost: Double?,
+    val pic: String?
 )

@@ -1,11 +1,11 @@
 package com.brainycorp.tourism.sales.adapter.out.jdbc
 
-import com.brainycorp.tourism.client.domain.Client
 import com.brainycorp.tourism.shared.criteria.CriteriaToMySqlConverter
 import com.brainycorp.tourism.sales.application.port.out.SearchSalesByCriteriaRepository
-import com.brainycorp.tourism.packagee.domain.Package
+import com.brainycorp.tourism.sales.domain.Buyer
+import com.brainycorp.tourism.sales.domain.PackageSold
 import com.brainycorp.tourism.sales.domain.Sale
-import com.brainycorp.tourism.service.domain.Service
+import com.brainycorp.tourism.sales.domain.ServiceSold
 import com.brainycorp.tourism.shared.criteria.Criteria
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
@@ -43,16 +43,12 @@ class SearchSalesByCriteriaMySqlAdapter(
                 Sale(
                     rs.getInt("num_sale"),
                     rs.getString("payment_method"),
-                    Client(
+                    Buyer(
                         rs.getString("nameClient"),
                         rs.getString("lastnameClient"),
-                        null,
-                        null,
-                        null,
-                        null,
                         rs.getString("emailClient")
                     ),
-                    Package(
+                    PackageSold(
                         rs.getString("codePackage"),
                         rs.getString("namePackage"),
                         rs.getString("destinationPackage"),
@@ -60,7 +56,7 @@ class SearchSalesByCriteriaMySqlAdapter(
                         rs.getString("picPackage"),
                         listOf(),
                     ),
-                    Service(
+                    ServiceSold(
                         rs.getInt("codeService"),
                         "",
                         rs.getString("destinationService"),

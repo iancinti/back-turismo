@@ -1,7 +1,7 @@
 package com.brainycorp.tourism.packagee.adapter.out.jdbc.model
 
+import com.brainycorp.tourism.packagee.domain.Item
 import com.brainycorp.tourism.packagee.domain.Package
-import com.brainycorp.tourism.service.domain.Service
 
 data class ServicePackageJdbcModel(
     val codePackage: String,
@@ -21,12 +21,12 @@ data class ServicePackageJdbcModel(
             val packages = mutableListOf<Package>()
             jdbcModel.map {
 
-                val services = mutableListOf<Service>()
+                val services = mutableListOf<Item>()
 
                 jdbcModel.map { ser ->
                     if (it.codePackage == ser.codePackage){
                         services.add(
-                            Service(
+                            Item(
                                 ser.codeService.toInt(),
                                 ser.typeName,
                                 ser.descriptionService,

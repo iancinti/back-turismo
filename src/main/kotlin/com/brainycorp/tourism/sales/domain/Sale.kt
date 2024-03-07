@@ -1,13 +1,45 @@
 package com.brainycorp.tourism.sales.domain
 
-import com.brainycorp.tourism.client.domain.Client
-import com.brainycorp.tourism.service.domain.Service
-import com.brainycorp.tourism.packagee.domain.Package
-
 data class Sale(
     val numSale: Int?,
     val paymentMethod: String?,
-    val client: Client?,
-    val packagee: Package?,
-    val service: Service?
+    val client: Buyer?,
+    val packagee: PackageSold?,
+    val service: ServiceSold?
+)
+
+
+data class PackageSold(
+    val code: String?,
+    val name: String?,
+    val destination: String?,
+    val cost: Double?,
+    val pic: String?,
+    val services: List<Item>?
+)
+
+data class Item(
+    val code: Int?,
+    val type: String?,
+    val description: String?,
+    val destination: String?,
+    val date: String?,
+    val cost: Double?,
+    val pic: String?
+)
+
+data class ServiceSold(
+    val code: Int?,
+    val type: String?,
+    val description: String?,
+    val destination: String?,
+    val date: String?,
+    val cost: Double?,
+    val pic: String?
+)
+
+data class Buyer(
+    val name: String?,
+    val lastname: String?,
+    val email: String?
 )
