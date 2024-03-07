@@ -27,7 +27,7 @@ data class ServicePackageJdbcModel(
                     if (it.codePackage == ser.codePackage){
                         services.add(
                             Service(
-                                ser.codeService,
+                                ser.codeService.toInt(),
                                 ser.typeName,
                                 ser.descriptionService,
                                 ser.destinationPackage,

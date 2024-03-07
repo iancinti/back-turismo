@@ -20,7 +20,7 @@ class RetriveServicesByCriteriaMySqlAdapter(
                 "tourist_services.destination" to "destination",
                 "tourist_services.date" to "date",
                 "tourist_services.cost" to "cost",
-                "type_services.name" to "typeName",
+                "tourist_services.type_id" to "typeId",
                 "tourist_services.pic" to "picS"
             ),
             "tourist_services",
@@ -30,8 +30,8 @@ class RetriveServicesByCriteriaMySqlAdapter(
         return jdbcTemplate.query(query) {
                 rs: ResultSet, _: Int ->
             Service(
-                rs.getString("code"),
-                rs.getString("typeName"),
+                rs.getInt("code"),
+                rs.getString("typeId"),
                 rs.getString("description"),
                 rs.getString("destination"),
                 rs.getString("date"),

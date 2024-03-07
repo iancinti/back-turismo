@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component
 class RetriveServiceByIdUseCase(
     val retriveServicesByCriteriaRepository: RetriveServicesByCriteriaRepository
 ): RetriveServiceByIdQuery {
-    override fun execute(id: Int): Service {
+    override fun execute(code: Int): Service {
         val criteria = Criteria.fromPrimitives(
             listOf(),
             listOf(
-                FiltersPrimitives("code", Operator.EQUAL.name, id.toString())
+                FiltersPrimitives("code", Operator.EQUAL.name, code.toString())
             ),
             null,
             null

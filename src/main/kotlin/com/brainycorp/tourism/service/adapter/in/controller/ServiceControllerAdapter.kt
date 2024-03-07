@@ -24,9 +24,9 @@ class ServiceControllerAdapter(
         return ResponseEntity(searchServicesQuery.execute(searchInput), HttpStatus.OK)
     }
 
-    @GetMapping("/{id}")
-    fun retriveServiceById(@PathVariable("id") id: Int): ResponseEntity<Service> {
-        val response = retriveServiceByIdQuery.execute(id)
+    @GetMapping("/{code}")
+    fun retriveServiceById(@PathVariable("code") code: Int): ResponseEntity<Service> {
+        val response = retriveServiceByIdQuery.execute(code)
         return ResponseEntity(response, HttpStatus.OK)
     }
 
