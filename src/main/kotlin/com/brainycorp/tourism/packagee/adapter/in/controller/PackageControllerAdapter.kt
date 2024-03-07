@@ -31,7 +31,7 @@ class PackageControllerAdapter(
     }
 
 
-   @PostMapping("/create")
+   @PostMapping
     fun createPackage(@RequestBody packag: Package): ResponseEntity<Void> {
         createPackageCommand.execute(packag)
         return ResponseEntity(HttpStatus.CREATED)

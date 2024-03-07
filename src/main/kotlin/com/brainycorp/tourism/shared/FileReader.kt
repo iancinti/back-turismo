@@ -9,18 +9,21 @@ class FileReader {
     companion object {
 
         val INSERT_SERVICE: String = getSql("insertService")
-        val UPDATE_SERVICE: String = getSql("updateService")
-        val DELETE_SERVICE: String = getSql("deleteService")
+        val INSERT_SERVICE_PACKAGE: String = getSql("insertServicePackage")
         val INSERT_PACKAGE: String = getSql("insertPackage")
-        val UPDATE_PACKAGE: String = getSql("updatePackage")
-        val DELETE_PACKAGE: String = getSql("deletePackage")
         val INSERT_PERSONAL_DATA: String = getSql("insertPersonalData")
         val INSERT_SALE: String = getSql("insertSale")
+
+        val UPDATE_SERVICE: String = getSql("updateService")
+        val UPDATE_PACKAGE: String = getSql("updatePackage")
         val UPDATE_SALE: String = getSql("updateSale")
-        val DELETE_SALE: String = getSql("deleteSale")
         val UPDATE_SELLER: String = getSql("updateSeller")
-        val DELETE_SELLER: String = getSql("deleteSeller")
         val UPDATE_CLIENT: String = getSql("updateClient")
+
+        val DELETE_SERVICE: String = getSql("deleteService")
+        val DELETE_PACKAGE: String = getSql("deletePackage")
+        val DELETE_SALE: String = getSql("deleteSale")
+        val DELETE_SELLER: String = getSql("deleteSeller")
         val DELETE_CLIENT: String = getSql("deleteClient")
 
         private fun getSql(fileName: String): String {
