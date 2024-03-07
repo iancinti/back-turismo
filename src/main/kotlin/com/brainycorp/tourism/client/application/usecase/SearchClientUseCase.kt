@@ -4,12 +4,14 @@ import com.brainycorp.tourism.client.application.port.`in`.SearchClientQuery
 import com.brainycorp.tourism.client.application.port.out.SearchClientsByCriteriaRepository
 import com.brainycorp.tourism.client.domain.Client
 import com.brainycorp.tourism.shared.criteria.*
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 
 @Component
 class SearchClientUseCase(
     val searchClientsByCriteriaRepository: SearchClientsByCriteriaRepository
 ): SearchClientQuery {
+
     override fun execute(searcher: String): List<Client> {
 
         val criteria = Criteria.fromPrimitives(

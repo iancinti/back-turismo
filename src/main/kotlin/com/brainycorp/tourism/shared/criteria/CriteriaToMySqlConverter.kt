@@ -11,8 +11,6 @@ class CriteriaToMySqlConverter {
                 query += " ${join.joinType.sql} ${join.table} ON ${join.on}"
             }
 
-            println(query)
-
             if (criteria.hasFilters()) {
                 query += " WHERE "
                 val whereQueryOR = criteria.filtersOR.filters.map { filter: Filter -> generateWhereQuery(filter) }
@@ -25,7 +23,6 @@ class CriteriaToMySqlConverter {
             if (criteria.hasOrder()){
                 query += " ORDER BY ${criteria.order.orderBy.param} ${criteria.order.orderType.orderTypes.value}"
             }
-            println(query)
 
             return "$query;"
         }

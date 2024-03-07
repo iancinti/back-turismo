@@ -4,6 +4,7 @@ import com.brainycorp.tourism.shared.criteria.CriteriaToMySqlConverter
 import com.brainycorp.tourism.client.application.port.out.SearchClientsByCriteriaRepository
 import com.brainycorp.tourism.client.domain.Client
 import com.brainycorp.tourism.shared.criteria.Criteria
+import org.slf4j.LoggerFactory
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 import java.sql.ResultSet
@@ -12,7 +13,7 @@ import java.sql.ResultSet
 class SearchClientsByCriteriaMySqlAdapter(
     val jdbcTemplate: JdbcTemplate
 ): SearchClientsByCriteriaRepository {
-
+    val log = LoggerFactory.getLogger("SearchClientsByCriteriaMySqlAdapter")
 
     override fun execute(criteria: Criteria): List<Client> {
         val query = CriteriaToMySqlConverter.convert(
@@ -28,6 +29,7 @@ class SearchClientsByCriteriaMySqlAdapter(
             "personal_data",
             criteria
         )
+        log.info("Se ejecuta query de filtrado de clientes: $query")
         return jdbcTemplate.query(query) { rs: ResultSet, _: Int ->
             Client(
                 rs.getString("name"),
