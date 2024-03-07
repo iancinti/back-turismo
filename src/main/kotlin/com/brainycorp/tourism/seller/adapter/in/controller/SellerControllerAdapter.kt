@@ -1,9 +1,6 @@
 package com.brainycorp.tourism.seller.adapter.`in`.controller
 
-import com.brainycorp.tourism.seller.application.port.`in`.CreateSellerCommand
-import com.brainycorp.tourism.seller.application.port.`in`.DeleteSellerCommand
-import com.brainycorp.tourism.seller.application.port.`in`.SearchSellerQuery
-import com.brainycorp.tourism.seller.application.port.`in`.UpdateSellerCommand
+import com.brainycorp.tourism.seller.application.port.`in`.*
 import com.brainycorp.tourism.seller.domain.Seller
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -23,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/sellers")
 class SellerControllerAdapter(
     val searchSellerQuery: SearchSellerQuery,
+    val retriveSellerByIdQuery: RetriveSellerByIdQuery,
     val createSellerCommand: CreateSellerCommand,
     val updateSellerCommand: UpdateSellerCommand,
     val deleteSellerCommand: DeleteSellerCommand
@@ -35,6 +33,12 @@ class SellerControllerAdapter(
         val response= searchSellerQuery.execute(searcher)
         return ResponseEntity(response, HttpStatus.CREATED)
 
+    }
+
+    @GetMapping("/{id}")
+    fun retriveSellerById(@PathVariable("id") id: Int): ResponseEntity<Seller> {
+        val response = retriveSellerByIdQuery.execute(id)
+        return ResponseEntity(response, HttpStatus.OK)
     }
 
     @PostMapping("/create")
