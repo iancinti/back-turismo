@@ -1,0 +1,1 @@
+INSERT INTO clients (personal_data_id) VALUES (?)

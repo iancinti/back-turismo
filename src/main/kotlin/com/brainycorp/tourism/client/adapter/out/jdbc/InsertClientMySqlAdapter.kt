@@ -13,6 +13,7 @@ import java.sql.Date
 @Component
 class InsertClientMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreateClientRepository {
     val INSERT_PERSONAL_DATA: String = getSql("insertPersonalData")
+    val INSERT_CLIENT: String = getSql("insertClient")
     @Transactional
     override fun execute(client: Client){
         try {
@@ -34,7 +35,7 @@ class InsertClientMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreateClientRepo
 
             val pk = keyHolder.key?.toInt()
 
-            jdbcTemplate.update("INSERT INTO clients (personal_data_id) VALUES (?)", pk)
+            jdbcTemplate.update(INSERT_CLIENT, pk)
         }catch (e: Throwable){
             println(e.message)
 
