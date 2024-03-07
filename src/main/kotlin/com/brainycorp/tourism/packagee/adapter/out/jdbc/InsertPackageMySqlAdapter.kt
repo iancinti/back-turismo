@@ -2,8 +2,7 @@ package com.brainycorp.tourism.packagee.adapter.out.jdbc
 
 import com.brainycorp.tourism.packagee.application.port.out.CreatePackageRepository
 import com.brainycorp.tourism.packagee.domain.Package
-import com.brainycorp.tourism.shared.FileReader.Companion.INSERT_PACKAGE
-import com.brainycorp.tourism.shared.FileReader.Companion.INSERT_SERVICE_PACKAGE
+import com.brainycorp.tourism.shared.FileReader.Companion.getSql
 import org.springframework.dao.DataAccessException
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.support.GeneratedKeyHolder
@@ -12,6 +11,9 @@ import org.springframework.stereotype.Component
 
 @Component
 class InsertPackageMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreatePackageRepository {
+
+    val INSERT_PACKAGE: String = getSql("insertPackage")
+    val INSERT_SERVICE_PACKAGE: String = getSql("insertServicePackage")
 
     override fun execute(packag: Package){
         try {

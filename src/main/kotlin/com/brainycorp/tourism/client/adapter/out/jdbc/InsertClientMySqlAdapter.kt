@@ -3,7 +3,7 @@ package com.brainycorp.tourism.client.adapter.out.jdbc
 import com.brainycorp.tourism.client.application.port.out.CreateClientRepository
 import com.brainycorp.tourism.client.domain.Client
 import com.brainycorp.tourism.shared.DateParser
-import com.brainycorp.tourism.shared.FileReader.Companion.INSERT_PERSONAL_DATA
+import com.brainycorp.tourism.shared.FileReader.Companion.getSql
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.support.GeneratedKeyHolder
 import org.springframework.stereotype.Component
@@ -12,7 +12,7 @@ import java.sql.Date
 
 @Component
 class InsertClientMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreateClientRepository {
-
+    val INSERT_PERSONAL_DATA: String = getSql("insertPersonalData")
     @Transactional
     override fun execute(client: Client){
         try {
