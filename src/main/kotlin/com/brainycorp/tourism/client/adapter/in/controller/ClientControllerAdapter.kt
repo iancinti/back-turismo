@@ -22,7 +22,7 @@ class ClientControllerAdapter(
     @GetMapping
     @CrossOrigin("*")
     fun searchClient(@RequestParam searcher: String): ResponseEntity<List<Client>>{
-        log.info("Buscando Cliente por searcher: $searcher")
+        log.info("Buscando Clientes por searcher: $searcher")
         val response= searchClientQuery.execute(searcher)
         log.info("Se encontraron los clientes: $response")
         return ResponseEntity(response,HttpStatus.OK)
@@ -31,26 +31,34 @@ class ClientControllerAdapter(
 
     @GetMapping("/{id}")
     fun retriveClientById(@PathVariable("id") id: Int): ResponseEntity<Client> {
+        log.info("Buscando Cliente por ID: $id")
         val response = retriveClientByIdQuery.execute(id)
+        log.info("Se encontro el cliente: $response")
         return ResponseEntity(response, HttpStatus.OK)
     }
 
     @PostMapping
     fun createClient(@RequestBody client: Client): ResponseEntity<Void> {
+        log.info("Creando el cliente: $client")
         createClientCommand.execute(client)
+        log.info("Se creo el cliente: $client")
         return ResponseEntity(HttpStatus.CREATED)
 
     }
 
     @PatchMapping("/{id}")
     fun updateClient(@RequestBody client: Client, @PathVariable("id") id: String): ResponseEntity<Void> {
+        log.info("Modificando el cliente con ID: $id")
         updateClientCommand.execute(client, id)
+        log.info("Se modifico el cliente con ID: $id")
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
 
     @DeleteMapping("/{id}")
     fun deleteClient(@PathVariable("id") id: String): ResponseEntity<Void>{
+        log.info("Eliminando el cliente con ID: $id")
         deleteClientCommand.execute(id)
+        log.info("Se elimino el cliente con ID: $id")
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
 
