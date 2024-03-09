@@ -20,7 +20,7 @@ class RetriveServicesByCriteriaMySqlAdapter(
                 "tourist_services.destination" to "destination",
                 "tourist_services.date" to "date",
                 "tourist_services.cost" to "cost",
-                "tourist_services.type_id" to "typeId",
+                "type_services.name" to "typeId",
                 "tourist_services.pic" to "picS"
             ),
             "tourist_services",

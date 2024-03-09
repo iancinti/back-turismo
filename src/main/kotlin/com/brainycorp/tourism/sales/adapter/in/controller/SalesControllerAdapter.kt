@@ -22,7 +22,6 @@ class SalesControllerAdapter (
     fun searchSales(@RequestParam searcher: String): ResponseEntity<List<Sale>>{
         val response =searchSalesQuery.execute(searcher)
         return  ResponseEntity(response, HttpStatus.OK)
-
     }
 
     @GetMapping("/{id}")
@@ -31,20 +30,17 @@ class SalesControllerAdapter (
         return ResponseEntity(response, HttpStatus.OK)
     }
 
-    @PostMapping("/create")
-    fun createSale(@RequestBody sale: Sale): ResponseEntity<Void> {
+    @PostMapping
+    fun createSale(@RequestBody sale: SaleRequest): ResponseEntity<Void> {
         createSaleCommand.execute(sale)
         return ResponseEntity(HttpStatus.CREATED)
-
     }
-
 
     @PatchMapping("/{id}")
     fun updateSale(@RequestBody sale: SaleRequest, @PathVariable("id") id:String): ResponseEntity<Void> {
         updateSaleCommand.execute(sale, id)
         return ResponseEntity(HttpStatus.NO_CONTENT)
     }
-
 
    @DeleteMapping("/{id}")
     fun deleteSale(@PathVariable("id") id: String): ResponseEntity<Void> {

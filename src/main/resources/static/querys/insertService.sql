@@ -1,7 +1,9 @@
 INSERT INTO tourist_services (
-                              type_id,
-                              description,
-                              destination,
-                              cost
+    type_id,
+    description,
+    destination,
+    cost,
+    pic,
+    date
 )
-VALUES (?,?,?,?)
+VALUES (?,?,?,?,?,?)
