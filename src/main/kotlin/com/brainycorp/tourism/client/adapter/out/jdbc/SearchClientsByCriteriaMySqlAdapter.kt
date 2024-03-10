@@ -13,6 +13,7 @@ import java.sql.ResultSet
 class SearchClientsByCriteriaMySqlAdapter(
     val jdbcTemplate: JdbcTemplate
 ): SearchClientsByCriteriaRepository {
+
     val log = LoggerFactory.getLogger("SearchClientsByCriteriaMySqlAdapter")
 
     override fun execute(criteria: Criteria): List<Client> {

@@ -4,5 +4,5 @@ import com.brainycorp.tourism.sales.adapter.`in`.controller.model.CalculateReque
 import com.brainycorp.tourism.sales.adapter.`in`.controller.model.CalculateResponse
 
 interface CalculateSaleQuery {
-    fun caculate(calculate: CalculateRequest): CalculateResponse
+    fun calculate(calculate: CalculateRequest): CalculateResponse
 }

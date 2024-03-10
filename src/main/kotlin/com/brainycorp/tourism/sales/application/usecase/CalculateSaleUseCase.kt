@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class CalculateSaleUseCase: CalculateSaleQuery {
-    override fun caculate(calculate: CalculateRequest): CalculateResponse {
+    override fun calculate(calculate: CalculateRequest): CalculateResponse {
 
         val totalSinDescuento = calculate.services.sumOf { it.price.toDouble() }
 

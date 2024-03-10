@@ -9,6 +9,7 @@ import com.brainycorp.tourism.sales.domain.PackageSold
 import com.brainycorp.tourism.sales.domain.Sale
 import com.brainycorp.tourism.sales.domain.ServiceSold
 import com.brainycorp.tourism.shared.criteria.Criteria
+import org.slf4j.LoggerFactory
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 import java.sql.ResultSet
@@ -19,6 +20,7 @@ class SearchSalesByCriteriaMySqlAdapter(
 
 ): SearchSalesByCriteriaRepository {
 
+    val log = LoggerFactory.getLogger("SearchSalesByCriteriaMySqlAdapter")
 
     override fun execute(criteria: Criteria): List<SaleResponse> {
         val query = CriteriaToMySqlConverter.convert(
@@ -31,7 +33,7 @@ class SearchSalesByCriteriaMySqlAdapter(
                 "personal_data.email" to "emailClient",
             ), "sales"
             , criteria)
-
+        log.info("Se ejecuta query de filtrado de ventas: $query")
         return jdbcTemplate.query(query) {
                 rs: ResultSet, _: Int ->
             SaleResponse(

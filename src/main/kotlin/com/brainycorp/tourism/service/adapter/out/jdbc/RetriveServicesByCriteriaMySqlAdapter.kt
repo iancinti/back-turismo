@@ -4,6 +4,7 @@ import com.brainycorp.tourism.shared.criteria.CriteriaToMySqlConverter
 import com.brainycorp.tourism.service.application.port.out.RetriveServicesByCriteriaRepository
 import com.brainycorp.tourism.shared.criteria.Criteria
 import com.brainycorp.tourism.service.domain.Service
+import org.slf4j.LoggerFactory
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 import java.sql.ResultSet
@@ -12,6 +13,9 @@ import java.sql.ResultSet
 class RetriveServicesByCriteriaMySqlAdapter(
     val jdbcTemplate: JdbcTemplate
 ): RetriveServicesByCriteriaRepository {
+
+    val log = LoggerFactory.getLogger("SearchServicesByCriteriaMySqlAdapter")
+
     override fun execute(criteria: Criteria): List<Service> {
         val query = CriteriaToMySqlConverter.convert(
             mapOf(
@@ -26,7 +30,7 @@ class RetriveServicesByCriteriaMySqlAdapter(
             "tourist_services",
             criteria
         )
-
+        log.info("Se ejecuta query de filtrado de servicios: $query")
         return jdbcTemplate.query(query) {
                 rs: ResultSet, _: Int ->
             Service(

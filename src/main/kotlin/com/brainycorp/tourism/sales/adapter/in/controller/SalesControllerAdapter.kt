@@ -37,7 +37,10 @@ class SalesControllerAdapter (
     @PostMapping("/calculate")
     @CrossOrigin("*")
     fun caculate(@RequestBody calculate: CalculateRequest): ResponseEntity<CalculateResponse>{
-        return ResponseEntity(calculateSaleQuery.caculate(calculate), HttpStatus.OK)
+        log.info("Calculando precio total de la venta")
+        val response = calculateSaleQuery.calculate(calculate)
+        log.info("Se calculo el precio total de la venta: $response")
+        return ResponseEntity(response, HttpStatus.OK)
     }
 
     @GetMapping("/{id}")

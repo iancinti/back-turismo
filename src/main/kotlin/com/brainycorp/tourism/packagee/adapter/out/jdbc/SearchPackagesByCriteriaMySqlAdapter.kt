@@ -5,6 +5,7 @@ import com.brainycorp.tourism.packagee.adapter.out.jdbc.model.ServicePackageJdbc
 import com.brainycorp.tourism.packagee.domain.Package
 import com.brainycorp.tourism.packagee.application.port.out.SearchPackagesByCriteriaRepository
 import com.brainycorp.tourism.shared.criteria.Criteria
+import org.slf4j.LoggerFactory
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Component
 import java.sql.ResultSet
@@ -13,6 +14,8 @@ import java.sql.ResultSet
 class SearchPackagesByCriteriaMySqlAdapter(
     val jdbcTemplate: JdbcTemplate
 ): SearchPackagesByCriteriaRepository {
+
+    val log = LoggerFactory.getLogger("SearchPackagesByCriteriaMySqlAdapter")
 
     override fun execute(criteria: Criteria): List<Package> {
 
@@ -32,7 +35,7 @@ class SearchPackagesByCriteriaMySqlAdapter(
             "tourist_package",
             criteria
         )
-
+        log.info("Se ejecuta query de filtrado de paquetes: $query")
         val packages = jdbcTemplate.query(query) {
                 rs: ResultSet, _: Int ->
             ServicePackageJdbcModel(
