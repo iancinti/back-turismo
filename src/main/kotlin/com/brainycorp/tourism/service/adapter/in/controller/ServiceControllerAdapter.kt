@@ -23,8 +23,11 @@ class ServiceControllerAdapter(
 
     @GetMapping
     @CrossOrigin("*")
-    fun retriveServiceBySearch(@RequestParam("searcher") searchInput: String): ResponseEntity<List<Service>> {
-        return ResponseEntity(searchServicesQuery.execute(searchInput), HttpStatus.OK)
+    fun retriveServiceBySearch(
+        @RequestParam("searcher") searchInput: String,
+        @RequestParam(name = "typeId", required = false) typeId: String?
+    ): ResponseEntity<List<Service>> {
+        return ResponseEntity(searchServicesQuery.execute(searchInput, typeId), HttpStatus.OK)
     }
 
     @GetMapping("/{code}")

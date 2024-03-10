@@ -10,7 +10,7 @@ class CreatePackageUseCase(
     val createPackageRepository: CreatePackageRepository
 ): CreatePackageCommand {
 
-    override fun execute(packag: Package) {
-        createPackageRepository.execute(packag)
+    override fun execute(packag: Package): Int {
+        return createPackageRepository.execute(packag)
     }
 }

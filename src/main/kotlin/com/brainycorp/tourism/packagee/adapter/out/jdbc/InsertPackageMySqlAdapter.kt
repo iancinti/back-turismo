@@ -15,7 +15,7 @@ class InsertPackageMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreatePackageRe
     val INSERT_PACKAGE: String = getSql("insertPackage")
     val INSERT_SERVICE_PACKAGE: String = getSql("insertServicePackage")
 
-    override fun execute(packag: Package){
+    override fun execute(packag: Package): Int{
         try {
             val keyHolder :KeyHolder = GeneratedKeyHolder()
             jdbcTemplate.update({
@@ -29,10 +29,12 @@ class InsertPackageMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreatePackageRe
             packag.services?.forEach {
                 jdbcTemplate.update(INSERT_SERVICE_PACKAGE, generatedCode, it.code)
             }
+            return generatedCode?:0
         }catch (e: DataAccessException){
             println(e.message)
 
         }
+        return 0
     }
 
 }

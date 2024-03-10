@@ -4,5 +4,5 @@ import com.brainycorp.tourism.service.domain.Service
 
 interface SearchServicesQuery {
 
-    fun execute(searchInput: String): List<Service>
+    fun execute(searchInput: String, typeId: String?): List<Service>
 }

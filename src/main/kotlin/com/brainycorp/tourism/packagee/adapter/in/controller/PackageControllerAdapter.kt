@@ -40,11 +40,12 @@ class PackageControllerAdapter(
 
 
    @PostMapping
-    fun createPackage(@RequestBody packag: Package): ResponseEntity<Void> {
+   @CrossOrigin("*")
+    fun createPackage(@RequestBody packag: Package): ResponseEntity<Int> {
        log.info("Creando el paquete: $packag")
-        createPackageCommand.execute(packag)
+        val resp = createPackageCommand.execute(packag)
        log.info("Se creo el paquete: $packag")
-       return ResponseEntity(HttpStatus.CREATED)
+       return ResponseEntity(resp, HttpStatus.CREATED)
 
     }
 

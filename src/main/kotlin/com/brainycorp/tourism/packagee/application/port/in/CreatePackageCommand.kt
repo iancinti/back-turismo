@@ -4,5 +4,5 @@ import com.brainycorp.tourism.packagee.domain.Package
 
 interface CreatePackageCommand {
 
-    fun execute(packag: Package)
+    fun execute(packag: Package): Int
 }

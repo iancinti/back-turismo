@@ -1,6 +1,7 @@
 package com.brainycorp.tourism.client.domain
 
 data class Client(
+    val id: String?,
     val name: String?,
     val lastname: String?,
     val dni: String?,

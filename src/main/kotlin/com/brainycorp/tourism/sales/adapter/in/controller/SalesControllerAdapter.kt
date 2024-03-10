@@ -1,5 +1,7 @@
 package com.brainycorp.tourism.sales.adapter.`in`.controller
 
+import com.brainycorp.tourism.sales.adapter.`in`.controller.model.CalculateRequest
+import com.brainycorp.tourism.sales.adapter.`in`.controller.model.CalculateResponse
 import com.brainycorp.tourism.sales.adapter.`in`.controller.model.SaleRequest
 import com.brainycorp.tourism.sales.application.port.`in`.*
 import com.brainycorp.tourism.sales.domain.Sale
@@ -15,7 +17,8 @@ class SalesControllerAdapter (
     val retriveSaleByIdQuery: RetriveSaleByIdQuery,
     val createSaleCommand: CreateSaleCommand,
     val updateSaleCommand: UpdateSaleCommand,
-    val deleteSaleCommand: DeleteSaleCommand
+    val deleteSaleCommand: DeleteSaleCommand,
+    val calculateSaleQuery: CalculateSaleQuery
 ) {
 
     val log = LoggerFactory.getLogger("SaleControllerAdapter")
@@ -30,6 +33,12 @@ class SalesControllerAdapter (
         return  ResponseEntity(response, HttpStatus.OK)
     }
 
+    @PostMapping("/calculate")
+    @CrossOrigin("*")
+    fun caculate(@RequestBody calculate: CalculateRequest): ResponseEntity<CalculateResponse>{
+        return ResponseEntity(calculateSaleQuery.caculate(calculate), HttpStatus.OK)
+    }
+
     @GetMapping("/{id}")
     fun retriveSaleById(@PathVariable("id") id: Int): ResponseEntity<Sale> {
         log.info("Buscando venta por ID: $id")
@@ -39,6 +48,7 @@ class SalesControllerAdapter (
     }
 
     @PostMapping
+    @CrossOrigin("*")
     fun createSale(@RequestBody sale: SaleRequest): ResponseEntity<Void> {
         log.info("Creando la venta: $sale")
         createSaleCommand.execute(sale)

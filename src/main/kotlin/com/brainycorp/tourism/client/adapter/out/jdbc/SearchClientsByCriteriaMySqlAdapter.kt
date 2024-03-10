@@ -18,6 +18,7 @@ class SearchClientsByCriteriaMySqlAdapter(
     override fun execute(criteria: Criteria): List<Client> {
         val query = CriteriaToMySqlConverter.convert(
             mapOf(
+                "id" to "id",
                 "name" to "name",
                 "lastname" to "lastname",
                 "dni" to "dni",
@@ -32,6 +33,7 @@ class SearchClientsByCriteriaMySqlAdapter(
         log.info("Se ejecuta query de filtrado de clientes: $query")
         return jdbcTemplate.query(query) { rs: ResultSet, _: Int ->
             Client(
+                rs.getInt("id").toString(),
                 rs.getString("name"),
                 rs.getString("lastname"),
                 rs.getString("dni"),
