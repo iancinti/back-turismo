@@ -1,5 +1,6 @@
 package com.brainycorp.tourism.sales.application.usecase
 
+import com.brainycorp.tourism.sales.adapter.`in`.controller.model.SaleResponse
 import com.brainycorp.tourism.sales.application.port.`in`.RetriveSaleByIdQuery
 import com.brainycorp.tourism.sales.application.port.out.SearchSalesByCriteriaRepository
 import com.brainycorp.tourism.sales.domain.Sale
@@ -11,7 +12,7 @@ class RetriveSaleByIdUseCase(
     val retriveSalesByCriteriaRepository: SearchSalesByCriteriaRepository
 ): RetriveSaleByIdQuery {
 
-    override fun execute(id: Int): Sale {
+    override fun execute(id: Int): SaleResponse {
         val criteria = Criteria.fromPrimitives(
             listOf(),
             listOf(

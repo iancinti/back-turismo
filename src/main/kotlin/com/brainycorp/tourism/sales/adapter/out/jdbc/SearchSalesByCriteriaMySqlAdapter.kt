@@ -1,5 +1,7 @@
 package com.brainycorp.tourism.sales.adapter.out.jdbc
 
+import com.brainycorp.tourism.sales.adapter.`in`.controller.model.Client
+import com.brainycorp.tourism.sales.adapter.`in`.controller.model.SaleResponse
 import com.brainycorp.tourism.shared.criteria.CriteriaToMySqlConverter
 import com.brainycorp.tourism.sales.application.port.out.SearchSalesByCriteriaRepository
 import com.brainycorp.tourism.sales.domain.Buyer
@@ -18,54 +20,30 @@ class SearchSalesByCriteriaMySqlAdapter(
 ): SearchSalesByCriteriaRepository {
 
 
-    override fun execute(criteria: Criteria): List<Sale> {
+    override fun execute(criteria: Criteria): List<SaleResponse> {
         val query = CriteriaToMySqlConverter.convert(
             mapOf(
                 "num_sale" to "num_sale",
                 "payment_method" to "payment_method",
+                "cost" to "cost",
                 "personal_data.name" to "nameClient",
                 "personal_data.lastname" to "lastnameClient",
                 "personal_data.email" to "emailClient",
-                "tourist_package.code" to "codePackage",
-                "tourist_package.name" to "namePackage",
-                "tourist_package.destination" to "destinationPackage",
-                "tourist_package.cost" to "costPackage",
-                "tourist_services.code" to "codeService",
-                "tourist_services.description" to "descriptionService",
-                "tourist_services.cost" to "costService",
-                "tourist_services.destination" to "destinationService",
-                "tourist_package.pic" to "picPackage",
             ), "sales"
             , criteria)
 
         return jdbcTemplate.query(query) {
                 rs: ResultSet, _: Int ->
-                Sale(
+            SaleResponse(
                     rs.getInt("num_sale"),
                     rs.getString("payment_method"),
-                    Buyer(
-                        rs.getString("nameClient"),
-                        rs.getString("lastnameClient"),
-                        rs.getString("emailClient")
+                    Client(
+                            rs.getString("nameClient"),
+                            rs.getString("lastnameClient"),
+                            rs.getString("emailClient")
                     ),
-                    PackageSold(
-                        rs.getString("codePackage"),
-                        rs.getString("namePackage"),
-                        rs.getString("destinationPackage"),
-                        rs.getDouble("costPackage"),
-                        rs.getString("picPackage"),
-                        listOf(),
-                    ),
-                    ServiceSold(
-                        rs.getInt("codeService"),
-                        "",
-                        rs.getString("destinationService"),
-                        rs.getString("destinationService"),
-                        "",
-                        rs.getDouble("costService"),
-                        ""
-                    )
-                )
+                    rs.getDouble("cost")
+            )
         }
 
 

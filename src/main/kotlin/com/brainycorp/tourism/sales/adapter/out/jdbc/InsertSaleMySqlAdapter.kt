@@ -19,7 +19,8 @@ class InsertSaleMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreateSaleReposito
                 sale.paymentMethod,
                 sale.client,
                 sale.packagee,
-                sale.service
+                sale.service,
+                sale.cost
             )
         } catch (e: DataIntegrityViolationException) {
             println("Error de integridad de datos: ${e.cause?.message}")

@@ -17,12 +17,10 @@ class CalculateSaleUseCase: CalculateSaleQuery {
 
         val discount = if (descuentoAplicable > 0) "${descuentoAplicable * 100}%" else "0%"
 
-        val totalConDescuentoFormateado = String.format("%.2f", totalConDescuento)
-
         return CalculateResponse(
             calculate.services.size.toString(),
             discount,
-            totalConDescuentoFormateado
+            totalConDescuento
         )
     }
 }

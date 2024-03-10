@@ -6,5 +6,6 @@ data class SaleRequest(
     val paymentMethod: String?,
     val client: Int?,
     val packagee: Int?,
-    val service: Int?
+    val service: Int?,
+    val cost: Double?
 )

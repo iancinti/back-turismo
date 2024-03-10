@@ -3,6 +3,7 @@ package com.brainycorp.tourism.sales.adapter.`in`.controller
 import com.brainycorp.tourism.sales.adapter.`in`.controller.model.CalculateRequest
 import com.brainycorp.tourism.sales.adapter.`in`.controller.model.CalculateResponse
 import com.brainycorp.tourism.sales.adapter.`in`.controller.model.SaleRequest
+import com.brainycorp.tourism.sales.adapter.`in`.controller.model.SaleResponse
 import com.brainycorp.tourism.sales.application.port.`in`.*
 import com.brainycorp.tourism.sales.domain.Sale
 import org.slf4j.LoggerFactory
@@ -26,7 +27,7 @@ class SalesControllerAdapter (
 
     @GetMapping
     @CrossOrigin("*")
-    fun searchSales(@RequestParam searcher: String): ResponseEntity<List<Sale>>{
+    fun searchSales(@RequestParam searcher: String): ResponseEntity<List<SaleResponse>>{
         log.info("Buscando ventas por searcher: $searcher")
         val response =searchSalesQuery.execute(searcher)
         log.info("Se encontraron las ventas: $response")
@@ -40,7 +41,7 @@ class SalesControllerAdapter (
     }
 
     @GetMapping("/{id}")
-    fun retriveSaleById(@PathVariable("id") id: Int): ResponseEntity<Sale> {
+    fun retriveSaleById(@PathVariable("id") id: Int): ResponseEntity<SaleResponse> {
         log.info("Buscando venta por ID: $id")
         val response = retriveSaleByIdQuery.execute(id)
         log.info("Se encontro la venta: $response")
