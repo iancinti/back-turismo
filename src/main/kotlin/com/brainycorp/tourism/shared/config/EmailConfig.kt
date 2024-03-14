@@ -1,10 +1,12 @@
-    import org.springframework.context.annotation.Bean
+package com.brainycorp.tourism.shared.config
+
+import org.springframework.context.annotation.Bean
     import org.springframework.context.annotation.Configuration
     import org.springframework.mail.javamail.JavaMailSender
     import org.springframework.mail.javamail.JavaMailSenderImpl
 
     @Configuration
-    class SendGmailAdapter {
+    class EmailConfig {
 
         @Bean
         fun getJavaMailSender(): JavaMailSender {
@@ -12,8 +14,8 @@
             mailSender.host = "smtp.gmail.com"
             mailSender.port = 587
 
-            mailSender.username = ""
-            mailSender.password = ""
+            mailSender.username = "cclabsf@gmail.com"
+            mailSender.password = "qvey vmif rkgb plwg"
 
             val props = mailSender.javaMailProperties
             props["mail.transport.protocol"] = "smtp"
