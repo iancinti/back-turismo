@@ -1,6 +1,5 @@
-package com.brainycorp.tourism.print.domain
+package com.brainycorp.tourism.shared.models
 
-import com.brainycorp.tourism.client.domain.Client
 import com.itextpdf.kernel.pdf.PdfDocument
 import com.itextpdf.kernel.pdf.PdfWriter
 import com.itextpdf.layout.Document
@@ -8,18 +7,16 @@ import org.springframework.stereotype.Component
 import java.io.OutputStream
 
 @Component
-class PdfPrinter {
+class PdfPrinter<T> {
 
-    fun printToPdf(clients: List<Client>, outputStream: OutputStream, printer: (Document, Client) -> Unit) {
+    fun printToPdf(elements: List<T>, outputStream: OutputStream, printer: (Document, T) -> Unit) {
         try {
             val pdfWriter = PdfWriter(outputStream)
             val pdfDocument = PdfDocument(pdfWriter)
             val document = Document(pdfDocument)
-
-            for (client in clients) {
-                printer(document, client)
+            for (el in elements) {
+                printer(document, el)
             }
-
             document.close()
             outputStream.close()
         } catch (e: Exception) {

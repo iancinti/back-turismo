@@ -48,6 +48,7 @@ class ServiceControllerAdapter(
 
 
     @PostMapping
+    @CrossOrigin("*")
     fun createService(@RequestBody service: Service): ResponseEntity<Void> {
         log.info("Creando el servicio: $service")
         createServiceCommand.execute(service)
@@ -57,6 +58,7 @@ class ServiceControllerAdapter(
 
 
     @PatchMapping("/{code}")
+    @CrossOrigin("*")
     fun updateService(@RequestBody service: Service, @PathVariable("code") code: String): ResponseEntity<Void> {
         log.info("Modificando el servicio con codigo: $code")
         updateServiceCommand.execute(service, code)
@@ -66,6 +68,7 @@ class ServiceControllerAdapter(
 
 
     @DeleteMapping("/{code}")
+    @CrossOrigin("*")
     fun deleteService(@PathVariable("code") code: String): ResponseEntity<Void> {
         log.info("Eliminando el servicio con codigo: $code")
         deleteServiceCommand.execute(code)

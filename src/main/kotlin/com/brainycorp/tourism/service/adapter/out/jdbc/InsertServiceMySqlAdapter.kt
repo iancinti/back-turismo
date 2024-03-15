@@ -25,7 +25,7 @@ class InsertServiceMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreateServiceRe
                 Timestamp.valueOf(localDateTime)
             )
         }catch (e: Throwable){
-            println(e.cause?.message)
+            println(e.message)
 
         }
     }
