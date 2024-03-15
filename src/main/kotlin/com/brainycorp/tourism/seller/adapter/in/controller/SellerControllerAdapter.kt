@@ -66,6 +66,7 @@ class SellerControllerAdapter(
 
 
     @DeleteMapping("/{id}")
+    @CrossOrigin("*")
     fun deleteSeller(@PathVariable("id") id:String): ResponseEntity<Void> {
         log.info("Eliminando el vendedor con ID: $id")
         deleteSellerCommand.execute(id)

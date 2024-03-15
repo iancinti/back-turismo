@@ -58,6 +58,7 @@ class PackageControllerAdapter(
     }
 
     @DeleteMapping("/{code}")
+    @CrossOrigin("*")
     fun deletePackage(@PathVariable("code") code: String): ResponseEntity<Void> {
         log.info("Eliminando el paquete con codigo: $code")
         deletePackageCommand.execute(code)

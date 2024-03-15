@@ -18,7 +18,9 @@ class SearchServicesUseCase(
         filtersOr += FiltersPrimitives("description", "CONTAINS", searchInput)
         filtersOr += FiltersPrimitives("destination", "CONTAINS", searchInput)
 
+
         val filtersAnd: MutableList<FiltersPrimitives> = mutableListOf()
+        filtersAnd += FiltersPrimitives("tourist_services.delete_at", Operator.EQUAL.name, "")
         if (typeId != null) {
             if (typeId.isNotEmpty()){
                 filtersAnd += FiltersPrimitives("type_services.name", Operator.EQUAL.name, typeId.toString())

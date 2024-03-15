@@ -16,7 +16,9 @@ class SearchPackageUseCase(
             filtersOR =  listOf(
                 FiltersPrimitives("tourist_package.name", Operator.CONTAINS.value, searchInput),
             ),
-            filtersAND = listOf(),
+            filtersAND = listOf(
+                FiltersPrimitives("tourist_package.delete_at", Operator.EQUAL.name, "")
+            ),
             null,
             null,
             joins = listOf(
@@ -26,7 +28,7 @@ class SearchPackageUseCase(
             )
         )
 
-        return searchPackagesByCriteriaRepository.execute(criteriaPackage)
+        return searchPackagesByCriteriaRepository.execute(criteriaPackage).distinct()
     }
 
 }
