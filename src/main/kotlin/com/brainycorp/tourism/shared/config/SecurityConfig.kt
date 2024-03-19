@@ -17,6 +17,7 @@ class SecurityConfig {
     open fun apiFilterChain(http: HttpSecurity): SecurityFilterChain {
         http {
             csrf { disable() }
+            cors { disable() }
             securityMatcher("/**")
             authorizeHttpRequests {
                 authorize(anyRequest, permitAll)
