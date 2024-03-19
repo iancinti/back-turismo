@@ -15,7 +15,6 @@ class InsertSaleMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreateSaleReposito
         try {
             jdbcTemplate.update(
                 INSERT_SALE,
-                sale.numSale,
                 sale.paymentMethod,
                 sale.client,
                 sale.packagee,

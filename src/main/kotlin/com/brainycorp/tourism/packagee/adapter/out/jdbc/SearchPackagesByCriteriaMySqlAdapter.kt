@@ -30,7 +30,8 @@ class SearchPackagesByCriteriaMySqlAdapter(
                 "tourist_services.date" to "dateS",
                 "tourist_services.cost" to "costS",
                 "type_services.name" to "servicetypename",
-                "tourist_package.pic" to "picP"
+                "tourist_package.pic" to "picP",
+                "is_custom" to "is_custom"
             ),
             "tourist_package",
             criteria

@@ -17,6 +17,7 @@ class SearchPackageUseCase(
                 FiltersPrimitives("tourist_package.name", Operator.CONTAINS.value, searchInput),
             ),
             filtersAND = listOf(
+                FiltersPrimitives("is_custom", Operator.EQUAL.name, "1"),
                 FiltersPrimitives("tourist_package.delete_at", Operator.EQUAL.name, "")
             ),
             null,
