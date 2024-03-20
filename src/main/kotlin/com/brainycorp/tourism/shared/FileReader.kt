@@ -1,19 +1,18 @@
 package com.brainycorp.tourism.shared
 
+import org.springframework.core.io.ClassPathResource
 import java.io.IOException
-import java.nio.file.Files
-import java.nio.file.Paths
 
 class FileReader {
 
     companion object {
         fun getSql(fileName: String): String {
-            val pathResource = "src/main/resources/static/querys/"
-            val file = "$fileName.sql"
+            val pathResource = "static/querys/$fileName.sql"
             try {
-                return Files.readString(Paths.get(pathResource + file))
+                val resource = ClassPathResource(pathResource)
+                return resource.inputStream.bufferedReader().use { it.readText() }
             } catch (e: IOException) {
-                throw RuntimeException()
+                throw RuntimeException("Error al leer el archivo SQL: $fileName", e)
             }
         }
     }
