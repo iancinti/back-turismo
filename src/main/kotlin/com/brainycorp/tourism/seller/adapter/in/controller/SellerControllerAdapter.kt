@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/sellers")
+@CrossOrigin(origins = ["http://localhost:3000"])
 class SellerControllerAdapter(
     val searchSellerQuery: SearchSellerQuery,
     val retriveSellerByIdQuery: RetriveSellerByIdQuery,
@@ -47,7 +48,7 @@ class SellerControllerAdapter(
         return ResponseEntity(response, HttpStatus.OK)
     }
 
-    @PostMapping("/create")
+    @PostMapping
     fun createSeller(@RequestBody seller: Seller): ResponseEntity<Void> {
         log.info("Creando el vendedor: $seller")
         createSellerCommand.execute(seller)

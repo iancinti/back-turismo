@@ -17,7 +17,6 @@ import java.sql.ResultSet
 @Component
 class SearchSalesByCriteriaMySqlAdapter(
     val jdbcTemplate: JdbcTemplate
-
 ): SearchSalesByCriteriaRepository {
 
     val log = LoggerFactory.getLogger("SearchSalesByCriteriaMySqlAdapter")

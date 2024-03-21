@@ -7,7 +7,6 @@ import com.itextpdf.kernel.colors.ColorConstants
 import com.itextpdf.layout.element.Cell
 import com.itextpdf.layout.element.Paragraph
 import com.itextpdf.layout.element.Table
-import com.itextpdf.layout.element.Text
 import jakarta.servlet.http.HttpServletResponse
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
@@ -46,7 +45,7 @@ class SalesPdfAdapter(
                 table.addCell(Cell().add(Paragraph("${sale.client?.email ?: "N/A"}").setFontColor(ColorConstants.BLACK)))
 
                 document.add(table)
-                document.add(Paragraph("\n")) // Espacio entre registros
+                document.add(Paragraph("\n"))
             }
             response.outputStream.write(outputStream.toByteArray())
             response.flushBuffer()
