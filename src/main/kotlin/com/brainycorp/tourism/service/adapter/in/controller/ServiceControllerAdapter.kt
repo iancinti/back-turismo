@@ -31,6 +31,7 @@ class ServiceControllerAdapter(
     }
 
     @GetMapping("/{code}")
+    @CrossOrigin("*")
     fun retriveServiceById(@PathVariable("code") code: Int): ResponseEntity<Service> {
         log.info("Buscando servicio por codigo: $code")
         val response = retriveServiceByIdQuery.execute(code)
@@ -39,6 +40,7 @@ class ServiceControllerAdapter(
     }
 
     @GetMapping("/type/{type_id}")
+    @CrossOrigin("*")
     fun retriveServiceByTypeId(@PathVariable("type_id") typeId: Int): ResponseEntity<List<Service>> {
         log.info("Buscando servicio por tipo Id: $typeId")
         val response = retriveServiceByTypeIdQuery.execute(typeId)

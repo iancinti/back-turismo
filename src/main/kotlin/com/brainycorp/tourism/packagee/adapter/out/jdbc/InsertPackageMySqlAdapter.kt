@@ -23,6 +23,8 @@ class InsertPackageMySqlAdapter(val jdbcTemplate: JdbcTemplate): CreatePackageRe
                 ps.setString(1, packag.name)
                 ps.setString(2, packag.destination)
                 ps.setDouble(3, packag.cost?:0.0)
+                ps.setString(4, packag.pic)
+                ps.setBoolean(5, packag.isCustom?:false)
                 ps
             }, keyHolder)
             val generatedCode = keyHolder.key?.toInt()

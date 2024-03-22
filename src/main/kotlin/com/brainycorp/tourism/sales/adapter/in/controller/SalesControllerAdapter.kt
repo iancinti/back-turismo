@@ -69,6 +69,7 @@ class SalesControllerAdapter (
     }
 
    @DeleteMapping("/{id}")
+   @CrossOrigin("*")
     fun deleteSale(@PathVariable("id") id: String): ResponseEntity<Void> {
        log.info("Eliminando la venta con ID: $id")
        deleteSaleCommand.execute(id)

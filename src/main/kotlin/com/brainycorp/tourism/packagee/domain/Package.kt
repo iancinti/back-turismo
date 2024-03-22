@@ -7,7 +7,8 @@ data class Package(
     val destination: String?,
     val cost: Double?,
     val pic: String?,
-    val services: List<Item>?
+    val services: List<Item>?,
+    val isCustom: Boolean?
 )
 
 data class Item(

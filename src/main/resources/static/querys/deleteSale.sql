@@ -1,3 +1,3 @@
 UPDATE sales
     SET delete_at = NOW()
-WHERE id = ?;
+WHERE num_sale = ?;

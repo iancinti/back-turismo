@@ -46,6 +46,7 @@ data class ServicePackageJdbcModel(
                         it.costPackage.toDouble(),
                         it.pic,
                         services,
+                        null
                     )
                 )
             }

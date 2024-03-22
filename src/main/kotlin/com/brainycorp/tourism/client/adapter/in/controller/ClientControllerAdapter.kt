@@ -38,6 +38,7 @@ class ClientControllerAdapter(
     }
 
     @PostMapping
+    @CrossOrigin("*")
     fun createClient(@RequestBody client: Client): ResponseEntity<Void> {
         log.info("Creando el cliente: $client")
         createClientCommand.execute(client)
@@ -55,6 +56,7 @@ class ClientControllerAdapter(
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin("*")
     fun deleteClient(@PathVariable("id") id: String): ResponseEntity<Void>{
         log.info("Eliminando el cliente con ID: $id")
         deleteClientCommand.execute(id)
