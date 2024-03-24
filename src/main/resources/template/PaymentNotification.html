@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="">
+
 <head>
     <meta charset="UTF-8">
     <title>Payment Notification</title>
 </head>
+
 <body>
 
-    <div>
-        <h1 th:text="'Usted tubo un descuento del' + ${discount} + ' .'">
+<div>
+    <h1>Tu compra ha sido procesada exitosamente</h1>
+    <p>¡Gracias por tu compra!</p>
+    <p>Total Price: <span th:text="${totalPrice}"></span></p>
+    <p>Descuento: <span th:text="${discount}"></span></p>
 
-        </h1>
-    </div>
+    <h2>Servicios Comprados:</h2>
+    <ul>
+        <th:block th:each="service : ${services}">
+            <li>
+                <p>Código: <span th:text="${service.codigo}"></span></p>
+                <p>Nombre: <span th:text="${service.nombre}"></span></p>
+                <p>Destino: <span th:text="${service.destino}"></span></p>
+                <p>Costo: <span th:text="${service.costo}"></span></p>
+            </li>
+        </th:block>
+    </ul>
+</div>
 
 </body>
+
 </html>
