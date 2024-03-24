@@ -40,10 +40,10 @@ class SellerControllerAdapter(
 
     }
 
-    @GetMapping("/{id}")
-    fun retriveSellerById(@PathVariable("id") id: Int): ResponseEntity<Seller> {
-        log.info("Buscando vendedor por ID: $id")
-        val response = retriveSellerByIdQuery.execute(id)
+    @GetMapping("/{email}")
+    fun retriveSellerById(@PathVariable("email") email: String): ResponseEntity<Seller> {
+        log.info("Buscando vendedor por ID: $email")
+        val response = retriveSellerByIdQuery.execute(email)
         log.info("Se encontro el vendedor: $response")
         return ResponseEntity(response, HttpStatus.OK)
     }

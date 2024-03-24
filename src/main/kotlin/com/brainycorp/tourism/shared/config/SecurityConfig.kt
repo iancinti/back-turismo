@@ -28,11 +28,11 @@ class SecurityConfig {
             csrf { disable() }
             authorizeHttpRequests {
                 authorize(HttpMethod.POST,"/users/login", permitAll)
-                authorize(HttpMethod.POST,"/users/register", hasAuthority("ADMIN"))
-                authorize(HttpMethod.GET,"/**", hasAuthority("VENDEDOR"))
-                authorize(HttpMethod.POST,"/**", hasAuthority("VENDEDOR"))
-                authorize(HttpMethod.PATCH,"/**", hasAuthority("VENDEDOR"))
-                authorize(HttpMethod.DELETE,"/**", hasAuthority("VENDEDOR"))
+                authorize(HttpMethod.POST,"/users/register", hasAnyAuthority("GERENTE"))
+                authorize(HttpMethod.GET,"/**", hasAnyAuthority("VENDEDOR", "GERENTE"))
+                authorize(HttpMethod.POST,"/**", hasAnyAuthority("VENDEDOR", "GERENTE"))
+                authorize(HttpMethod.PATCH,"/**", hasAnyAuthority("VENDEDOR", "GERENTE"))
+                authorize(HttpMethod.DELETE,"/**", hasAnyAuthority("VENDEDOR", "GERENTE"))
                 authorize(anyRequest, authenticated)
             }
             httpBasic {  }

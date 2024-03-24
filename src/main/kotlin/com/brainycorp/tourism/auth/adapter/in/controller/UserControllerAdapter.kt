@@ -23,6 +23,7 @@ class UserControllerAdapter(
 ) {
 
     @PostMapping("/register")
+    @CrossOrigin("*")
     fun register(@RequestBody user: User) : ResponseEntity<Any> {
         registerCommand.execute(user)
         return ResponseEntity(HttpStatus.CREATED)

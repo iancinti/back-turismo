@@ -11,11 +11,11 @@ class RetriveSellerByIdUseCase(
     val retriveSellerByCriterialRepository: SearchSellerByCriterialRepository
 ): RetriveSellerByIdQuery {
 
-    override fun execute(id: Int): Seller {
+    override fun execute(email: String): Seller {
         val criteria = Criteria.fromPrimitives(
             listOf(),
             listOf(
-                FiltersPrimitives("personal_data.personal_data_id", Operator.EQUAL.name, id.toString())
+                FiltersPrimitives("personal_data.email", Operator.EQUAL.name, email)
             ),
             null,
             null,

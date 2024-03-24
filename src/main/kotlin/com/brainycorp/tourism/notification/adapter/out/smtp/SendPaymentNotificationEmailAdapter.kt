@@ -1,6 +1,6 @@
-package com.brainycorp.tourism.notification.adapter.out
+package com.brainycorp.tourism.notification.adapter.out.smtp
 
-import com.brainycorp.tourism.notification.application.port.out.SendNotificationRepository
+import com.brainycorp.tourism.notification.application.port.out.SendPaymentNotificationRepository
 import com.brainycorp.tourism.notification.domain.Payment
 import jakarta.mail.internet.MimeMessage
 import org.slf4j.LoggerFactory
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component
 import org.thymeleaf.TemplateEngine
 
 @Component
-class SendNotificationEmailAdapter(
+class SendPaymentNotificationEmailAdapter(
     val emailSender: JavaMailSender,
     val templateEngine: TemplateEngine,
-): SendNotificationRepository {
+): SendPaymentNotificationRepository {
 
 
     val log = LoggerFactory.getLogger("SendNotificationEmailAdapter")

@@ -4,5 +4,5 @@ import com.brainycorp.tourism.seller.domain.Seller
 
 interface RetriveSellerByIdQuery {
 
-    fun execute (id: Int): Seller
+    fun execute (email: String): Seller
 }

@@ -48,6 +48,7 @@ class ClientControllerAdapter(
     }
 
     @PatchMapping("/{id}")
+    @CrossOrigin("*")
     fun updateClient(@RequestBody client: Client, @PathVariable("id") id: String): ResponseEntity<Void> {
         log.info("Modificando el cliente con ID: $id")
         updateClientCommand.execute(client, id)
