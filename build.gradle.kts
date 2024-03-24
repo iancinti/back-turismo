@@ -27,6 +27,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2")
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+	implementation("org.springframework.security:spring-security-oauth2-jose")
 	implementation("com.itextpdf:kernel:8.0.3")
 	implementation("com.itextpdf:io:8.0.3")
 	implementation("com.itextpdf:layout:8.0.3")

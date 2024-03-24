@@ -1,0 +1,1 @@
+UPDATE users SET password = ?, enabled = ? WHERE username = ?;
