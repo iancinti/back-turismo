@@ -1,6 +1,5 @@
 package com.brainycorp.tourism.auth.application.usecase
 
-import com.brainycorp.tourism.auth.adapter.`in`.controller.model.AuthResponse
 import com.brainycorp.tourism.auth.application.port.`in`.RegisterCommand
 import com.brainycorp.tourism.auth.application.port.out.ResgisterRepository
 import com.brainycorp.tourism.auth.domain.User

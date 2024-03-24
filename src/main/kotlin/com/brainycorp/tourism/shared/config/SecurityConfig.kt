@@ -3,10 +3,14 @@ package com.brainycorp.tourism.shared.config
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
+import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.ProviderManager
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.config.annotation.web.invoke
+import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.provisioning.JdbcUserDetailsManager
@@ -23,6 +27,7 @@ class SecurityConfig {
         http {
             csrf { disable() }
             authorizeHttpRequests {
+                authorize(HttpMethod.POST,"/users/login", permitAll)
                 authorize(HttpMethod.POST,"/users/register", hasAuthority("ADMIN"))
                 authorize(HttpMethod.GET,"/**", hasAuthority("VENDEDOR"))
                 authorize(HttpMethod.POST,"/**", hasAuthority("VENDEDOR"))
@@ -33,6 +38,17 @@ class SecurityConfig {
             httpBasic {  }
         }
         return http.build()
+    }
+
+    @Bean
+    fun authenticationManager(
+        userDetailsService: UserDetailsService,
+        passwordEncoder: PasswordEncoder): AuthenticationManager {
+        val authenticationProvider = DaoAuthenticationProvider()
+        authenticationProvider.setUserDetailsService(userDetailsService)
+        authenticationProvider.setPasswordEncoder(passwordEncoder)
+
+        return ProviderManager(authenticationProvider)
     }
 
     @Bean
