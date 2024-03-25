@@ -2,12 +2,15 @@
  
 ### Es un sistema basado en una agencia de turismo que realiza el registro de clientes, empleados y ventas y la administracion de paquetes y servicios. 
 
+## -Deploys-
+
+- [Deploy Backend](https://ttl-18h-qsik2kxf4a-uc.a.run.app/)
+- [Deploy Frontend](https://turismo-front-qsik2kxf4a-rj.a.run.app/)
 
 ## -Repositorios-
 
-###### Backend: https://github.com/iancinti/back-turismo
-###### Frontend: https://github.com/KatLawwliet/front-turismo
-
+- [Repo Backend](https://github.com/iancinti/back-turismo)
+- [Repo Frontend](https://github.com/KatLawwliet/front-turismo)
 
 ### Diagramas de Dominios y Clases
 
