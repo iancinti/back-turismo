@@ -41,6 +41,7 @@ class SellerControllerAdapter(
     }
 
     @GetMapping("/{email}")
+    @CrossOrigin("*")
     fun retriveSellerById(@PathVariable("email") email: String): ResponseEntity<Seller> {
         log.info("Buscando vendedor por ID: $email")
         val response = retriveSellerByIdQuery.execute(email)
@@ -49,6 +50,7 @@ class SellerControllerAdapter(
     }
 
     @PostMapping
+    @CrossOrigin("*")
     fun createSeller(@RequestBody seller: Seller): ResponseEntity<Void> {
         log.info("Creando el vendedor: $seller")
         createSellerCommand.execute(seller)
@@ -58,6 +60,7 @@ class SellerControllerAdapter(
 
 
     @PatchMapping("/{id}")
+    @CrossOrigin("*")
     fun updateSeller(@RequestBody seller: Seller, @PathVariable("id") id:String): ResponseEntity<Void> {
         log.info("Modificando el vendedor con ID: $id")
         updateSellerCommand.execute(seller, id)

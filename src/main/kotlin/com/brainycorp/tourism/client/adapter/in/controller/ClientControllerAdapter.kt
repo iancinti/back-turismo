@@ -30,6 +30,7 @@ class ClientControllerAdapter(
 
 
     @GetMapping("/{id}")
+    @CrossOrigin("*")
     fun retriveClientById(@PathVariable("id") id: Int): ResponseEntity<Client> {
         log.info("Buscando Cliente por ID: $id")
         val response = retriveClientByIdQuery.execute(id)

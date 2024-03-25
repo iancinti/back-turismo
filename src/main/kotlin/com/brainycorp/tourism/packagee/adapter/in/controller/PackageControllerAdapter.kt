@@ -31,6 +31,7 @@ class PackageControllerAdapter(
 
 
     @GetMapping("/{code}")
+    @CrossOrigin("*")
     fun retrivePackageByCode(@PathVariable("code") code: String): ResponseEntity<Package> {
         log.info("Buscando paquete por codigo: $code")
         val response = retrivePackageByCodeQuery.execute(code)
@@ -50,6 +51,7 @@ class PackageControllerAdapter(
     }
 
     @PatchMapping("/{code}")
+    @CrossOrigin("*")
     fun updatePackage(@RequestBody packag: Package, @PathVariable("code") code: String): ResponseEntity<Void> {
         log.info("Modificando el paquete con codigo: $code")
         updatePackageCommand.execute(packag, code)

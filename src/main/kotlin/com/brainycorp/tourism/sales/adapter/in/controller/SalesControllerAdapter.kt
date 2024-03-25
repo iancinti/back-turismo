@@ -44,6 +44,7 @@ class SalesControllerAdapter (
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin("*")
     fun retriveSaleById(@PathVariable("id") id: Int): ResponseEntity<SaleResponse> {
         log.info("Buscando venta por ID: $id")
         val response = retriveSaleByIdQuery.execute(id)
@@ -61,6 +62,7 @@ class SalesControllerAdapter (
     }
 
     @PatchMapping("/{id}")
+    @CrossOrigin("*")
     fun updateSale(@RequestBody sale: SaleRequest, @PathVariable("id") id:String): ResponseEntity<Void> {
         log.info("Modificando la venta con ID: $id")
         updateSaleCommand.execute(sale, id)
